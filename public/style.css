@@ -1,0 +1,412 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #050914;
+  --panel: #0b1425;
+  --cyan: #00d9ff;
+  --blue: #2678ff;
+  --purple: #a855f7;
+  --green: #00e59b;
+  --text: #f4f7ff;
+  --muted: #9aabc4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 80% 15%, #14265b55, transparent 30%),
+    radial-gradient(circle at 15% 85%, #062e4655, transparent 30%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+.navbar {
+  height: 72px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1b2b42;
+  background: #050914dd;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(15px);
+}
+
+.brand,
+.footer-brand {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand span,
+.footer-brand span {
+  color: var(--cyan);
+}
+
+.status {
+  color: var(--green);
+  font-size: 12px;
+  border: 1px solid #00e59b55;
+  background: #00e59b12;
+  padding: 10px 15px;
+  border-radius: 30px;
+}
+
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 65px 22px 35px;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 9px 17px;
+  border: 1px solid #00d9ff66;
+  color: var(--cyan);
+  background: #00d9ff0b;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 66px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #00d9ff, #3984ff, #b45cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-top: 17px;
+  font-size: 15px;
+}
+
+.scanner {
+  max-width: 1000px;
+  margin: 20px auto 35px;
+  padding: 25px;
+  border: 1px solid #1689d966;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #101d32, #080e1d);
+  box-shadow: 0 0 25px #00c8ff17, inset 0 0 20px #7c3aed0b;
+}
+
+.scanner-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.scanner-heading h2 {
+  font-size: 19px;
+}
+
+.scanner-icon {
+  color: var(--cyan);
+  font-size: 24px;
+}
+
+label {
+  display: block;
+  color: #dce9ff;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input:not([type]) {
+  width: 100%;
+  padding: 16px;
+  border-radius: 9px;
+  border: 1px solid #245078;
+  background: #050b18;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px #00d9ff33;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 9px;
+  padding: 15px 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+#pingBtn {
+  background: linear-gradient(100deg, #0757a9, #087acb);
+  border: 1px solid var(--cyan);
+}
+
+#nmapBtn {
+  background: linear-gradient(100deg, #50158e, #8218aa);
+  border: 1px solid var(--purple);
+}
+
+#pingBtn,
+#nmapBtn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+#result {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 95px;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #1b4a6d;
+  border-radius: 10px;
+  background: #050b18;
+  color: var(--green);
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.scan-footer {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 12px;
+}
+
+.features {
+  max-width: 1100px;
+  padding: 15px 22px 35px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.features > div,
+.feature-card {
+  padding: 22px;
+  background: #0b1425;
+  border: 1px solid #1b304c;
+  border-radius: 13px;
+  transition: .25s;
+}
+
+.features > div:hover,
+.feature-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px #00d9ff12;
+}
+
+.features h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.features p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.warning {
+  max-width: 1000px;
+  margin: 10px auto 35px;
+  padding: 22px;
+  border: 1px solid #d99a24;
+  border-radius: 12px;
+  background: #d99a240b;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.warning-title {
+  color: #ffbd36;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.warning p,
+.warning li {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.warning ul {
+  padding-left: 18px;
+}
+
+.warning input[type="checkbox"] {
+  accent-color: var(--green);
+  margin-right: 7px;
+}
+
+footer {
+  padding: 25px 6%;
+  border-top: 1px solid #1b2b42;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-brand {
+  font-size: 19px;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0 18px;
+    height: 65px;
+  }
+
+  .brand {
+    font-size: 19px;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+
+  .scanner {
+    margin: 15px;
+    padding: 18px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .warning {
+    margin: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scanner {
+    animation: glow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 15px #00d9ff12; }
+    to { box-shadow: 0 0 28px #a855f733; }
+  }
+}
+/* DANI SCAN mobile layout fixes */
+
+.brand {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  display: none;
+}
+
+.hero {
+  padding-top: 85px;
+  scroll-margin-top: 90px;
+}
+
+.navbar {
+  z-index: 100;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding-top: 65px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    line-height: 1.15;
+  }
+
+  .scanner {
+    width: calc(100% - 24px);
+    margin: 12px auto;
+  }
+}
+/* DANI SCAN - DNS BUTTON FINAL FIX */
+
+#dnsBtn {
+  display: block !important;
+  width: 100% !important;
+  min-height: 64px;
+  margin: 14px 0 20px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+
+  background: linear-gradient(110deg, #0879d1, #087fba) !important;
+  color: #ffffff !important;
+
+  border: 2px solid #22d3ee !important;
+  border-radius: 16px !important;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.18);
+}
+
+#dnsBtn:hover {
+  background: linear-gradient(110deg, #0891b2, #2563eb) !important;
+}
+
+#dnsBtn:active {
+  transform: scale(0.98);
+}
