@@ -5,55 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#050914">
   <title>DANI SCAN - 100% Free Website Scanner | Free Ping, Port & DNS Check Tool</title>
-  <meta name="description" content="DANI SCAN is a 100% Free Website Scanner. Check any website Ping, Port, DNS and IP for free online. No login, no payment. Best free website scanner tool.">
+  <meta name="description" content="DANI SCAN is a 100% Free Website Scanner. Check any website Ping, Port, DNS and IP for free online. No login, no payment.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    #mainScreen{ display:none; }
+    .continue-btn{ width:100%; padding:14px; background:#fff; color:#000; font-weight:bold; font-size:16px; border:none; border-radius:10px; margin-top:15px; cursor:pointer; }
+    .back-btn{ background:transparent; border:1px solid #333; color:#aaa; padding:8px 15px; border-radius:8px; cursor:pointer; margin-bottom:15px; }
+    .info-box{ text-align:center; padding:25px; max-width:800px; margin:auto; background:#0a0a0a; border-radius:15px; color:#fff; border:1px solid #222; }
+  </style>
 </head>
 <body>
 <header class="navbar">
   <div class="brand">DANI <span>SCAN</span></div>
   <div class="status">● SYSTEM ONLINE</div>
 </header>
+
+<!-- PAGE 1 : FRONT / WELCOME PAGE -->
+<div id="welcomeScreen">
 <main>
   <section class="hero">
     <div class="tag">NETWORK INTELLIGENCE PLATFORM</div>
-    <h1>Advanced Network<br>
-      <span class="gradient">Diagnostics</span>
-    </h1>
+    <h1>Advanced Network<br><span class="gradient">Diagnostics</span></h1>
     <p>Analyze website connectivity and inspect public DNS records with a professional diagnostic interface.</p>
     <p><b>DANI SCAN - 100% Free Website Scanner | No Login, No Payment</b></p>
   </section>
 
-  <section class="scanner">
-    <div class="scanner-heading">
-      <h2>Network Scanner</h2>
-      <div class="scanner-icon">⌁</div>
-    </div>
-    <label for="target">TARGET DOMAIN</label>
-    <input type="text" id="target" placeholder="example.com" autocomplete="off">
+  <div class="info-box">
+    <h2>100% Free Website Scanner - No Payment, No Login</h2>
+    <p style="font-size:16px; line-height:1.8;">
+      On other website scanner tools, first they ask for <b>Sign Up</b>, then they ask for <b>Credit Card</b>, then they say <b>"Free Trial Ended"</b>.
+      <br><br>
+      <b>DANI SCAN is not like that.</b><br>
+      DANI SCAN is totally <b>100% FREE</b>. No money, no login, no limit. Just type the website name and press Scan.
+      <br><br>
+      If you are searching for a <b>free website scanner</b>, you are in the right place. Here you get <b>Ping Check, Port Scanner, DNS Lookup and IP Check</b> all for free.
+      Best free tool for students, developers and beginners.
+    </p>
+    <h3>Why DANI SCAN is Better?</h3>
+    <p>
+      ✅ 100% Free - Always Free<br>
+      ✅ No Login - Works Without Account<br>
+      ✅ No Payment - No Hidden Charges<br>
+      ✅ Fast & Easy - Result in 5 Seconds
+    </p>
+    <p style="color:#aaa;">Free Website Scanner | Free Port Scanner | Free Ping Tool | DANI SCAN</p>
+  </div>
 
-    <button id="pingBtn" type="button">⚡ PING CHECK</button>
-    <button id="nmapBtn" type="button">◈ PORT CHECK</button>
-    <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
-
-    <div id="result" aria-live="polite">Waiting for diagnostic request...</div>
-
-    <div class="scan-footer">DANI SCAN ENGINE • AUTHORIZED TESTING ONLY</div>
-  </section>
-
-  <section class="features">
-    <div>
-      <h3>⚡ Ping Diagnostics</h3>
-      <p>Check HTTP website reachability and response status.</p>
-    </div>
-    <div>
-      <h3>◈ Port Check</h3>
-      <p>Port checking feature is under development.</p>
-    </div>
-    <div>
-      <h3>🌐 DNS Lookup</h3>
-      <p>Inspect public A, AAAA, MX and NS records.</p>
-    </div>
-  </section>
+  <div class="info-box" style="margin-top:20px;">
+    <h3 style="margin:0;">For More Information Contact Us</h3>
+    <p style="font-size:16px; margin-top:10px;">For more information contact on <a href="mailto:dk2008508@gmail.com" style="color:#fff; font-weight:bold; text-decoration:underline;">dk2008508@gmail.com</a></p>
+  </div>
 
   <section class="warning">
     <div>
@@ -64,8 +65,36 @@
       <input type="checkbox" id="authorization">
       I have authorization to test this domain.
     </label>
+    <button class="continue-btn" onclick="goToScanner()">CONTINUE TO SCANNER →</button>
   </section>
 </main>
+</div>
+
+<!-- PAGE 2 : MAIN SCANNER -->
+<div id="mainScreen">
+<main>
+  <button class="back-btn" onclick="goBack()">← Back to Home</button>
+  <section class="scanner">
+    <div class="scanner-heading">
+      <h2>Network Scanner</h2>
+      <div class="scanner-icon">⌁</div>
+    </div>
+    <label for="target">TARGET DOMAIN</label>
+    <input type="text" id="target" placeholder="example.com" autocomplete="off">
+    <button id="pingBtn" type="button">⚡ PING CHECK</button>
+    <button id="nmapBtn" type="button">◈ PORT CHECK</button>
+    <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
+    <div id="result" aria-live="polite">Waiting for diagnostic request...</div>
+    <div class="scan-footer">DANI SCAN ENGINE • AUTHORIZED TESTING ONLY</div>
+  </section>
+
+  <section class="features">
+    <div><h3>⚡ Ping Diagnostics</h3><p>Check HTTP website reachability and response status.</p></div>
+    <div><h3>◈ Port Check</h3><p>Port checking feature is under development.</p></div>
+    <div><h3>🌐 DNS Lookup</h3><p>Inspect public A, AAAA, MX and NS records.</p></div>
+  </section>
+</main>
+</div>
 
 <footer>
   <div class="footer-brand">DANI <span>SCAN</span></div>
@@ -73,32 +102,23 @@
   <p>© 2026 DANI SCAN</p>
 </footer>
 
-<div style="text-align:center; padding:25px; max-width:800px; margin:auto; background:#0a0a0a; border-radius:15px; color:white;">
-  <h2 style="color:#00ff88;">100% Free Website Scanner - No Payment, No Login</h2>
-  <p style="font-size:16px; line-height:1.7;">
-    Go to other website scanner tools and first they ask for <b>Sign Up</b>, then they ask for <b>Credit Card</b>, then they say <b>"Free Trial Ended"</b>.
-    <br><br>
-    <b>DANI SCAN is not like that.</b><br>
-    DANI SCAN is totally <b>100% FREE</b>. No money, no login, no limit. Just type the website name and press Scan.
-    <br><br>
-    If you are searching for a <b>free website scanner</b>, you are in the right place. Here you get <b>Ping Check, Port Scanner, DNS Lookup and IP Check</b> all for free.
-    Best free tool for students, developers and beginners.
-  </p>
-  <h3 style="color:yellow;">Why DANI SCAN is Better?</h3>
-  <p>
-    ✅ 100% Free - Always Free<br>
-    ✅ No Login - Works Without Account<br>
-    ✅ No Payment - No Hidden Charges<br>
-    ✅ Fast & Easy - Result in 5 Seconds
-  </p>
-  <p style="color:#aaa;">Free Website Scanner | Free Port Scanner | Free Ping Tool | DANI SCAN</p>
-</div>
-
-<div style="text-align:center; padding:20px; max-width:800px; margin:20px auto; background:#111; border:1px solid #00ff88; border-radius:15px; color:white;">
-  <h3 style="color:#00ff88; margin:0;">For More Information Contact Us</h3>
-  <p style="font-size:16px; margin-top:10px;">For more information contact on <a href="mailto:dk2008508@gmail.com" style="color:yellow; font-weight:bold;">dk2008508@gmail.com</a></p>
-</div>
-
 <script src="script.js"></script>
+<script>
+function goToScanner(){
+  var check = document.getElementById('authorization');
+  if(!check.checked){
+    alert('Please tick the Authorized box first!');
+    return;
+  }
+  document.getElementById('welcomeScreen').style.display = 'none';
+  document.getElementById('mainScreen').style.display = 'block';
+  window.scrollTo(0,0);
+}
+function goBack(){
+  document.getElementById('mainScreen').style.display = 'none';
+  document.getElementById('welcomeScreen').style.display = 'block';
+  window.scrollTo(0,0);
+}
+</script>
 </body>
-</html>
+  </html>
