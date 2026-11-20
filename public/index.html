@@ -125,7 +125,41 @@
   </section>
 </main>
 </div>
+<!-- Rating Section Start -->
+<div style="max-width:600px; margin:30px auto; padding:20px; background:#0a0f1e; border:1px solid #00e5ff; border-radius:15px; text-align:center;">
+  <h3 style="color:#fff;">⭐ Rate My Website</h3>
+  <p style="color:#aaa; font-size:14px;">Facing any problem? Give a rating and tell us</p>
+  
+  <div id="stars" style="font-size:35px; cursor:pointer; margin:10px 0;">
+    <span onclick="setRating(1)">☆</span>
+    <span onclick="setRating(2)">☆</span>
+    <span onclick="setRating(3)">☆</span>
+    <span onclick="setRating(4)">☆</span>
+    <span onclick="setRating(5)">☆</span>
+  </div>
 
+  <textarea id="feedbackText" placeholder="Write your problem here..." style="width:90%; height:70px; padding:10px; border-radius:10px; background:#111; color:#fff; border:1px solid #333;"></textarea>
+  <br><br>
+  <button onclick="sendFeedback()" style="padding:10px 25px; background:#00e5ff; border:none; border-radius:20px; font-weight:bold; cursor:pointer;">Send Feedback</button>
+  <p id="thanksMsg" style="color:#00ff88; display:none;">Thank You! Your feedback has been received ❤️</p>
+</div>
+
+<script>
+let myRating = 0;
+function setRating(n){
+  myRating = n;
+  let s = document.getElementById('stars').children;
+  for(let i=0;i<5;i++){ s[i].innerText = i<n ? '★' : '☆'; s[i].style.color = i<n ? '#FFD700' : '#fff'; }
+}
+function sendFeedback(){
+  let msg = document.getElementById('feedbackText').value;
+  if(myRating==0){ alert('Please select stars first!'); return; }
+  let text = "Rating: " + myRating + " Star%0AProblem: " + msg;
+  window.open("https://wa.me/923435315207?text=" + text, "_blank");
+  document.getElementById('thanksMsg').style.display = 'block';
+}
+</script>
+<!-- Rating Section End -->
 <footer>
   <div class="footer-brand">DANI <span>SCAN</span></div>
   <p>Network Diagnostics Platform</p>
