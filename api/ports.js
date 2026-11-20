@@ -61,7 +61,11 @@ module.exports = async (req, res) => {
 
     const results = await Promise.all([
       checkPort(ip, 80),
-      checkPort(ip, 443)
+      checkPort(ip, 443),
+      checkPort(ip, 21),
+      checkPort(ip, 22),
+      checkPort(ip, 25),
+      checkPort(ip, 8080)
     ]);
 
     res.json({
