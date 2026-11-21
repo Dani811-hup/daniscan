@@ -54,9 +54,11 @@
 <body>
 <header class="navbar">
   <div class="brand">DANI <span>SCAN</span></div>
-<p>Line 1 -____</p>
-<p>Line 2 -____</p>
-<p>Line 3 -____/p>
+<div onclick="openMenu()" style="cursor:pointer; display:flex; flex-direction:column; gap:5px; padding:8px;">
+  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
+  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
+  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
+</div>
 </header>
 <div style="background: #CC0000; color: #FFFFFF; padding: 3px 0; overflow: hidden; white-space: nowrap; font-weight: bold; font-size: 12px;">
   <marquee behavior="scroll" direction="left" scrollamount="5">
@@ -204,6 +206,9 @@ function goBack(){
   document.getElementById('mainScreen').style.display = 'none';
   document.getElementById('welcomeScreen').style.display = 'block';
   window.scrollTo(0,0);
+function openMenu() {
+  alert("menu is open!");
+}
 }
 </script>
 </body>
