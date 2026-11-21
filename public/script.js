@@ -1,4 +1,3 @@
-
 const targetInput = document.getElementById("target");
 const pingBtn = document.getElementById("pingBtn");
 const portBtn = document.getElementById("nmapBtn");
@@ -87,7 +86,7 @@ async function getAPIData(url, options = {}) {
   try {
     data = await response.json();
   } catch {
-    throw new Error("Invalid server response. Please try again.");
+    throw new Error("Invalid server response. HTTP " + response.status);
   }
 
   if (!response.ok) {
