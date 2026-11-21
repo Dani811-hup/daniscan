@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -187,6 +186,55 @@ main {padding:15px}
   font-size:30px;
 }
 
+/* LINUX STYLE RESULT TERMINAL */
+
+#result {
+  position:sticky;
+  top:10px;
+  z-index:100;
+
+  margin-top:12px;
+  margin-bottom:18px;
+  padding:20px;
+
+  width:100%;
+  min-height:240px;
+  max-height:42vh;
+  overflow-y:auto;
+
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+
+  background:#000000;
+  border:1px solid #22c55e;
+  border-radius:10px;
+
+  color:#22ff88;
+  font-family:"Courier New",monospace;
+  font-size:14px;
+  line-height:1.8;
+
+  box-shadow:
+    0 0 12px rgba(34,255,136,.12),
+    inset 0 0 15px rgba(0,255,100,.04);
+
+  scrollbar-width:thin;
+  scrollbar-color:#22c55e #050505;
+}
+
+#result::-webkit-scrollbar {
+  width:7px;
+}
+
+#result::-webkit-scrollbar-track {
+  background:#050505;
+}
+
+#result::-webkit-scrollbar-thumb {
+  background:#22c55e;
+  border-radius:10px;
+}
+
 .scanner label {
   display:block;
   margin:20px 0 8px;
@@ -208,30 +256,94 @@ main {padding:15px}
 
 #target:focus {border-color:#00e5ff}
 
+/* DIFFERENT BUTTON COLORS */
+
 .scanner button:not(.back-btn) {
   width:100%;
   padding:14px;
   margin-top:12px;
-  border:0;
+  border:1px solid transparent;
   border-radius:9px;
-  background:#087cdb;
   color:white;
   font-weight:bold;
-  font-size:15px;
+  font-size:14px;
+  cursor:pointer;
+  transition:.2s ease;
 }
 
-#result {
-  margin-top:20px;
-  padding:16px;
-  min-height:100px;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  background:#030813;
-  border:1px solid #24344d;
-  border-radius:10px;
-  color:#00e5ff;
-  font-size:13px;
-  line-height:1.7;
+.scanner button:not(.back-btn):hover:not(:disabled) {
+  filter:brightness(1.2);
+  transform:translateY(-1px);
+}
+
+/* Existing working buttons */
+
+#pingBtn {
+  background:#087cdb;
+  border-color:#38bdf8;
+}
+
+#nmapBtn {
+  background:#7c3aed;
+  border-color:#a78bfa;
+}
+
+#dnsBtn {
+  background:#087f5b;
+  border-color:#34d399;
+}
+
+/* Future defensive tools */
+
+#sslBtn {
+  background:#0f766e;
+  border-color:#2dd4bf;
+}
+
+#headersBtn {
+  background:#b45309;
+  border-color:#fbbf24;
+}
+
+#httpMethodsBtn {
+  background:#1d4ed8;
+  border-color:#60a5fa;
+}
+
+#robotsBtn {
+  background:#475569;
+  border-color:#94a3b8;
+}
+
+#sitemapBtn {
+  background:#9333ea;
+  border-color:#c084fc;
+}
+
+#whoisBtn {
+  background:#be123c;
+  border-color:#fb7185;
+}
+
+#ipBtn {
+  background:#0369a1;
+  border-color:#38bdf8;
+}
+
+#subdomainBtn {
+  background:#4d7c0f;
+  border-color:#a3e635;
+}
+
+#techBtn {
+  background:#6d28d9;
+  border-color:#a78bfa;
+}
+
+#futureTools button:disabled {
+  opacity:.8;
+  cursor:not-allowed;
+  filter:saturate(.7);
 }
 
 .scan-footer {
@@ -387,6 +499,13 @@ footer {
 @media(max-width:480px) {
   .hero h1 {font-size:29px}
   .scanner {padding:17px}
+
+  #result {
+    min-height:220px;
+    max-height:40vh;
+    font-size:13px;
+    padding:16px;
+  }
 }
 </style>
 </head>
@@ -444,14 +563,65 @@ footer {
     <div class="scanner-icon">⌁</div>
   </div>
 
+  <!-- LINUX STYLE RESULTS BOX - MOVED ABOVE ALL BUTTONS -->
+
+  <div id="result" aria-live="polite">DANI SCAN TERMINAL
+────────────────────────────
+[ SYSTEM ] Diagnostic terminal ready.
+[ STATUS ] Waiting for diagnostic request...
+[ INFO   ] Enter an authorized target below.
+────────────────────────────</div>
+
   <label for="target">TARGET DOMAIN</label>
   <input id="target" type="text" placeholder="example.com" autocomplete="off">
+
+  <!-- EXISTING WORKING BUTTONS -->
 
   <button id="pingBtn" type="button">⚡ PING CHECK</button>
   <button id="nmapBtn" type="button">◈ PORT CHECK</button>
   <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
 
-  <div id="result" aria-live="polite">Waiting for diagnostic request...</div>
+  <!-- FUTURE DEFENSIVE TOOLS -->
+
+  <div id="futureTools">
+
+    <button id="sslBtn" type="button" disabled>
+      🔒 SSL / TLS CERTIFICATE CHECK • COMING SOON
+    </button>
+
+    <button id="headersBtn" type="button" disabled>
+      🛡 SECURITY HEADERS CHECK • COMING SOON
+    </button>
+
+    <button id="httpMethodsBtn" type="button" disabled>
+      📡 HTTP METHODS CHECK • COMING SOON
+    </button>
+
+    <button id="robotsBtn" type="button" disabled>
+      🤖 ROBOTS.TXT CHECK • COMING SOON
+    </button>
+
+    <button id="sitemapBtn" type="button" disabled>
+      🗺 SITEMAP CHECK • COMING SOON
+    </button>
+
+    <button id="whoisBtn" type="button" disabled>
+      🌍 WHOIS DOMAIN LOOKUP • COMING SOON
+    </button>
+
+    <button id="ipBtn" type="button" disabled>
+      🌐 PUBLIC IP INFORMATION • COMING SOON
+    </button>
+
+    <button id="subdomainBtn" type="button" disabled>
+      🔎 SUBDOMAIN DISCOVERY • COMING SOON
+    </button>
+
+    <button id="techBtn" type="button" disabled>
+      💻 TECHNOLOGY DETECTION • COMING SOON
+    </button>
+
+  </div>
 
   <div class="scan-footer">DANI SCAN ENGINE • AUTHORIZED TESTING ONLY</div>
 </section>
@@ -640,5 +810,4 @@ function sendFeedback() {
 </script>
 
 </body>
-  </html>
-  
+</html>
