@@ -1,60 +1,31 @@
 const https = require("node:https");
 const dns = require("node:dns").promises;
 const net = require("node:net");
-const { Redis } = require("@upstash/redis");
-const { Ratelimit } = require("@upstash/ratelimit");
-
-const redis = Redis.fromEnv();
-
-const limiter = new Ratelimit({
-  redis,
-  limiter: Ratelimit.fixedWindow(5, "1 d"),
-  prefix: "daniscan:ssl"
-});
+const tls = require("node:tls");
 
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
-
   if (req.method !== "POST") {
     return res.status(405).json({ success: false, error: "Method not allowed" });
   }
-
   try {
-    const forwarded = req.headers["x-forwarded-for"];
-    const ip = typeof forwarded === "string" ? forwarded.split(",")[0].trim() : "";
-    if (!ip || net.isIP(ip) === 0) {
-      return res.status(400).json({ success: false, error: "Unable to identify client IP" });
-    }
-
-    const { success, remaining, reset } = await limiter.limit(ip);
-    res.setHeader("X-RateLimit-Limit", "5");
-    res.setHeader("X-RateLimit-Remaining", String(remaining));
-    if (!success) {
-      return res.status(429).json({ success: false, error: "Daily limit reached. Maximum 5 SSL checks per IP per day.", remaining: 0, reset });
-    }
-
     let body = req.body;
     if (typeof body === "string") {
       try { body = JSON.parse(body); } catch { body = {}; }
     }
     const target = body?.target;
-
     if (typeof target !== "string" || !target.trim()) {
       return res.status(400).json({ success: false, error: "Enter a domain" });
     }
-
     let url;
     try { url = new URL(target.includes("://") ? target : `https://${target}`); }
     catch { return res.status(400).json({ success: false, error: "Invalid domain" }); }
-
     const host = url.hostname.toLowerCase();
-    if (url.protocol !== "https:" || url.username || url.password || url.port || !host || host === "localhost" || net.isIP(host)) {
+    if (url.protocol !== "https:" || !host || host === "localhost" || net.isIP(host)) {
       return res.status(400).json({ success: false, error: "Only public HTTPS domains on port 443 are allowed" });
     }
-
     const records = await dns.resolve4(host);
     if (!records.length) throw new Error("Domain has no IPv4 address");
-
     const blocked = [/^0\./,/^10\./,/^127\./,/^169\.254\./,/^172\.(1[6-9]|2\d|3[01])\./,/^192\.168\./,/^192\.0\.2\./,/^198\.18\./,/^198\.19\./,/^198\.51\.100\./,/^203\.0\.113\./,/^(22[4-9]|23\d|24\d|25[0-5])\./];
     if (records.some(ip => blocked.some(re => re.test(ip)))) throw new Error("Private or reserved IP blocked");
 
@@ -70,7 +41,7 @@ module.exports = async (req, res) => {
       }, (response) => {
         const socket = response.socket;
         const cert = socket.getPeerCertificate();
-        const hostnameError = require("node:tls").checkServerIdentity(host, cert);
+        const hostnameError = tls.checkServerIdentity(host, cert);
         response.resume();
         response.on("end", () => {
           if (!cert || !cert.valid_to) return reject(new Error("Certificate unavailable"));
@@ -101,9 +72,9 @@ module.exports = async (req, res) => {
       request.setTimeout(5000);
     });
 
-    return res.status(200).json({ success: true, remaining, result });
-
+    return res.status(200).json({ success: true, remaining: 5, result });
   } catch (error) {
+    console.error("SSL ERROR:", error);
     return res.status(500).json({ success: false, error: error.message || "SSL check failed" });
   }
 };
