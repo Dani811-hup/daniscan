@@ -1,159 +1,520 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  </div>
-<head><link rel="icon" href="favicon.ico">
-  
-  <meta name="google-adsense-account" content="ca-pub-7225530172764220">
-  <!-- Site Name aur Title ke liye -->
-<title>100% Free Website Scanner free network scanner- Dani scan</title>
-<meta property="og:site_name" content="Dani Scan" />
-<meta name="application-name" content="Dani Scan" />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050914">
 
-<!-- Google ko Site Name batane ke liye Structured Data (Sab se zaroori) -->
+<title>DANI SCAN - Free Website Scanner | Ping, Port & DNS Checker</title>
+
+<meta name="description" content="DANI SCAN is a free online website and network diagnostics scanner. Check Ping, Ports, DNS and IP information. No login or payment required.">
+
+<meta name="keywords" content="Dani Scan, free website scanner, network scanner, ping checker, port checker, DNS lookup, website diagnostics">
+
+<meta name="author" content="Danyal Khan">
+
+<meta name="google-adsense-account" content="ca-pub-7225530172764220">
+
+<meta name="google-site-verification" content="xjRHD4jSl2NXG-EYxLTCeT0-SxBlofXG2DQpKIKU5s0">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dani Scan">
+<meta property="og:title" content="DANI SCAN - Free Website Scanner">
+<meta property="og:description" content="Free Ping, Port and DNS diagnostics. No login required.">
+<meta property="og:url" content="https://daniscan.vercel.app/">
+
+<link rel="canonical" href="https://daniscan.vercel.app/">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style.css">
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Dani Scan",
   "alternateName": ["Daniscan", "DANI SCAN"],
-  "url": "https://vercel.app"
+  "url": "https://daniscan.vercel.app/"
 }
 </script>
 
-  <meta name="google-site-verification" content="xjRHD4jSl2NXG-EYxLTCeT0-SxBlofXG2DQpKIKU5s0" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050914">
-  <title>DANI SCAN - 100% Free Website Scanner | Free Ping, Port & DNS Check Tool</title>
-  <meta name="description" content="DANI SCAN is a 100% Free Website Scanner. Check any website Ping, Port, DNS and IP for free online. No login, no payment.">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    #mainScreen{ display:none; }
-    .continue-btn{ width:100%; padding:14px; background:#fff; color:#000; font-weight:bold; font-size:16px; border:none; border-radius:10px; margin-top:15px; cursor:pointer; }
-    .back-btn{ background:transparent; border:1px solid #333; color:#aaa; padding:8px 15px; border-radius:8px; cursor:pointer; margin-bottom:15px; }
-    .info-box{ text-align:center; padding:25px; max-width:800px; margin:auto; background:#0a0a0a; border-radius:15px; color:#fff; border:1px solid #222; }
-  </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "DaniScan",
-  "url": "https://daniscan.vercel.app/",
-  "author": {
-    "@type": "Person",
-    "name": "Danyal Khan",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "Dir Upper, Khyber Pakhtunkhwa, Pakistan"
-    },
-    "description": "Danyal Khan from Dir Upper, Khyber Pakhtunkhwa, Pakistan is the creator of DaniScan."
-  }
+<style>
+* {box-sizing:border-box}
+
+body {
+  margin:0;
+  background:#050914;
+  color:white;
+  font-family:Arial,sans-serif;
 }
-</script>
+
+.navbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 20px;
+  background:#080e1c;
+  border-bottom:1px solid #17263a;
+}
+
+.brand,.footer-brand {
+  font-size:24px;
+  font-weight:900;
+  color:white;
+}
+
+.brand span,.footer-brand span {color:#00e5ff}
+
+.menu-icon {
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  padding:8px;
+}
+
+.menu-icon div {
+  width:26px;
+  height:3px;
+  background:#00e5ff;
+  border-radius:5px;
+}
+
+#myMenu {
+  display:none;
+  position:fixed;
+  top:0;
+  right:0;
+  width:270px;
+  max-width:85%;
+  height:100%;
+  background:#0a0f1e;
+  border-left:1px solid #00e5ff;
+  padding:25px;
+  z-index:99999;
+}
+
+#myMenu a {
+  display:block;
+  padding:15px 5px;
+  color:white;
+  text-decoration:none;
+  border-bottom:1px solid #253047;
+}
+
+.menu-close {
+  text-align:right;
+  font-size:25px;
+  color:#00e5ff;
+  cursor:pointer;
+}
+
+.notice {
+  background:#b90000;
+  color:white;
+  padding:8px;
+  font-size:12px;
+  font-weight:bold;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+main {padding:15px}
+
+.warning {
+  background:#111a2c;
+  border:1px solid #ffb52e;
+  border-radius:15px;
+  padding:20px;
+  margin:10px 0 25px;
+}
+
+.warning-title {
+  color:#ffc247;
+  font-size:19px;
+  font-weight:bold;
+}
+
+.warning p {color:#cbd5e1}
+
+.warning label {
+  display:block;
+  margin-top:15px;
+  font-size:14px;
+}
+
+.continue-btn {
+  width:100%;
+  padding:15px;
+  margin-top:18px;
+  background:#00e5ff;
+  color:#000;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+#mainScreen {display:none}
+
+.back-btn {
+  background:transparent;
+  border:1px solid #34445c;
+  color:white;
+  padding:10px 16px;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+.scanner {
+  background:#0b1425;
+  border:1px solid #00d9ff;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 0 20px rgba(0,229,255,.08);
+}
+
+.scanner-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.scanner-heading h2 {color:#00e5ff}
+
+.scanner-icon {
+  color:#00e5ff;
+  font-size:30px;
+}
+
+.scanner label {
+  display:block;
+  margin:20px 0 8px;
+  color:#00e5ff;
+  font-size:13px;
+  font-weight:bold;
+}
+
+#target {
+  width:100%;
+  padding:14px;
+  background:#050914;
+  border:1px solid #33445e;
+  border-radius:9px;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
+
+#target:focus {border-color:#00e5ff}
+
+.scanner button:not(.back-btn) {
+  width:100%;
+  padding:14px;
+  margin-top:12px;
+  border:0;
+  border-radius:9px;
+  background:#087cdb;
+  color:white;
+  font-weight:bold;
+  font-size:15px;
+}
+
+#result {
+  margin-top:20px;
+  padding:16px;
+  min-height:100px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  background:#030813;
+  border:1px solid #24344d;
+  border-radius:10px;
+  color:#00e5ff;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.scan-footer {
+  margin-top:18px;
+  color:#8493a9;
+  text-align:center;
+  font-size:11px;
+}
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+  margin-top:25px;
+}
+
+.features div {
+  background:#0b1425;
+  padding:18px;
+  border:1px solid #26364e;
+  border-radius:12px;
+}
+
+.features h3 {color:#00e5ff}
+.features p {color:#aab7ca;line-height:1.6;font-size:14px}
+
+.hero {
+  text-align:center;
+  padding:45px 10px;
+}
+
+.tag {
+  color:#00e5ff;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.hero h1 {font-size:36px}
+
+.gradient {
+  color:#00e5ff;
+}
+
+.hero p {
+  color:#aab7ca;
+  line-height:1.7;
+}
+
+.about,.rating {
+  background:#0a0f1e;
+  border:1px solid #1e293b;
+  border-radius:18px;
+  padding:25px 18px;
+  margin:25px 12px;
+}
+
+.about img {
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #00e5ff;
+}
+
+.about h2,.rating h3 {color:white}
+
+.about p {
+  color:#aab7ca;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.about a {color:#22ff88}
+
+#stars {
+  font-size:35px;
+  cursor:pointer;
+}
+
+#feedbackText {
+  width:100%;
+  height:85px;
+  background:#111;
+  color:white;
+  border:1px solid #333;
+  border-radius:10px;
+  padding:12px;
+}
+
+.rating button {
+  background:#00e5ff;
+  color:black;
+  border:0;
+  border-radius:20px;
+  padding:12px 25px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+footer {
+  background:#080e1c;
+  text-align:center;
+  padding:30px 15px;
+  color:#9aa9bd;
+  font-size:13px;
+}
+
+#permissionModal {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  background:rgba(0,0,0,.9);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.permission-card {
+  width:100%;
+  max-width:420px;
+  background:#101b30;
+  border:1px solid #00d9ff;
+  border-radius:18px;
+  padding:24px;
+  color:white;
+}
+
+.permission-card h2 {color:#ffc247}
+.permission-card p {color:#b8c5d8;line-height:1.6}
+
+.permission-card label {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:22px 0;
+}
+
+.permission-card button {
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  margin-top:10px;
+  color:white;
+  background:#087cdb;
+  font-weight:bold;
+}
+
+.permission-card button:disabled {opacity:.4}
+.permission-card .cancel {background:#35425a}
+
+@media(max-width:480px) {
+  .hero h1 {font-size:29px}
+  .scanner {padding:17px}
+}
+</style>
 </head>
+
 <body>
+
 <header class="navbar">
   <div class="brand">DANI <span>SCAN</span></div>
-<div onclick="openMenu()" style="cursor:pointer; display:flex; flex-direction:column; gap:5px; padding:8px;">
-  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
-  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
-  <div style="width:26px; height:3px; background:#00E5FF; border-radius:5px;"></div>
-</div>
+  <div class="menu-icon" onclick="openMenu()">
+    <div></div><div></div><div></div>
+  </div>
 </header>
-<div style="background: #CC0000; color: #FFFFFF; padding: 3px 0; overflow: hidden; white-space: nowrap; font-weight: bold; font-size: 12px;">
-  <marquee behavior="scroll" direction="left" scrollamount="5">
-    🛡️ In The Future, All Defensive Security Tools Will Be Added To This Website - Complete Protection, Advanced Scanning & Total Security In One Place - Stay Tuned! 🚀
+
+<nav id="myMenu">
+  <div class="menu-close" onclick="closeMenu()">✕</div>
+  <h2 style="color:#00e5ff">DANI SCAN</h2>
+  <a href="#" onclick="goHome();return false">Home</a>
+  <a href="#" onclick="goToScanner();return false">Network Scanner</a>
+  <a href="#about" onclick="closeMenu()">About Creator</a>
+  <a href="#rating" onclick="closeMenu()">Rate Website</a>
+</nav>
+
+<div class="notice">
+  <marquee scrollamount="5">
+    🛡️ FUTURE DEFENSIVE SECURITY TOOLS • ADVANCED DIAGNOSTICS • STAY TUNED! 🚀
   </marquee>
 </div>
-<!-- PAGE 1 : FRONT / WELCOME PAGE -->
+
 <div id="welcomeScreen">
 <main>
 
-  <!-- 1. SAB SE UPAR - AUTHORIZED BOX -->
-  <section class="warning">
-    <div>
-      <div class="warning-title">⚠ AUTHORIZED USE ONLY</div>
-      <p>Only test domains y_ou own or have explicit permission to assess.</p>
-    </div>
-    <label>
-      <input type="checkbox" id="authorization">
-      I have authorization to test this domain.
-    </label>
-    <button class="continue-btn" onclick="goToScanner()">CONTINUE TO SCANNER →</button>
-  </section>
-<!-- ===== ABOUT - FINAL INLINE - VERCEL KE LIYE ===== -->
-<div style="background:#0a0f1e; border:1px solid #1e293b; border-radius:20px; padding:28px 18px; margin:16px 12px; text-align:left; overflow:hidden; box-sizing:border-box;">
+<section class="warning">
+  <div class="warning-title">⚠ AUTHORIZED USE ONLY</div>
+  <p>Only test domains you own or have explicit permission to assess.</p>
+  <label>
+    <input type="checkbox" id="authorization">
+    I have authorization to test this domain.
+  </label>
+  <button class="continue-btn" onclick="goToScanner()">
+    CONTINUE TO SCANNER →
+  </button>
+</section>
 
-  <div style="text-align:center; margin-bottom:22px;">
-    <img src="/danyal.jpg" alt="Danyal Khan" style="width:180px; height:180px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff; box-shadow:0 0 35px rgba(0,229,255,0.65); display:inline-block;">
-  </div>
-
-  <h2 style="color:#fff; font-size:24px; font-weight:800; margin:0 0 14px 0; line-height:1.3;">⚡ About the Creator</h2>
-
-  <div style="color:#94a3b8; font-size:15px; line-height:1.7; word-wrap:break-word;">
-    <p style="margin:0 0 14px 0;">
-      <span style="color:#22ff88; font-weight:700;">Danyal Khan</span> is a self-taught <b style="color:#fff;">Ethical Hacker, Bug Bounty Hunter, and Web Developer</b> from <span style="color:#22ff88; font-weight:700;">Dir Upper, Khyber Pakhtunkhwa (KPK), Pakistan.</span>
-    </p>
-    <p style="margin:0 0 14px 0;">
-      Coming from a remote region with limited access to formal tech infrastructure and overcoming personal academic setbacks, Danyal proved that passion and self-learning matter more than a traditional degree. Without formal institutional training, he taught himself network security, ethical hacking, and full-stack web development from the ground up.
-    </p>
-    <p style="margin:0 0 14px 0;">
-      He built <b style="color:#fff;">DANI SCAN</b> — one of the first 100% free, open-access web-based network diagnostics and reconnaissance platforms emerging from Dir Upper, KPK. Designed for students, developers, and security researchers, the platform provides instant Ping, Port, and DNS checks with no login, no registration, and no payment required.
-    </p>
-  </div>
-
-  <div style="margin-top:18px; border-top:1px solid #1e293b; padding-top:16px; color:#cbd5e1; font-size:14px; line-height:1.9; word-wrap:break-word;">
-    🎯 <b style="color:#fff;">Vision:</b> To keep essential cybersecurity tools 100% free and accessible for Pakistani youth, and to inspire self-taught learners from remote areas of KPK to build innovative tech solutions.<br><br>
-    📍 <b style="color:#fff;">Location:</b> Dir Upper, Khyber Pakhtunkhwa, Pakistan<br>
-    🛡 <b style="color:#fff;">Focus:</b> Bug Bounty Hunting, Web Security &amp; Reconnaissance<br>
-    👽 <b style="color:#fff;">Bugcrowd:</b> <a href="https://bugcrowd.com/h/HackWithDanyal" target="_blank" style="color:#22ff88; text-decoration:none;">bugcrowd.com/h/HackWithDanyal</a><br>
-    ✉ <b style="color:#fff;">Contact:</b> <a href="mailto:dk2008508@gmail.com" style="color:#22ff88; text-decoration:none;">dk2008508@gmail.com</a>
-  </div>
-</div>
-<!-- ===== ABOUT END ===== -->
-
-<!-- ===== ABOUT END ===== -->
 </main>
 </div>
 
-<!-- PAGE 2 : MAIN SCANNER -->
 <div id="mainScreen">
 <main>
-  <button class="back-btn" onclick="goBack()">← Back to Home</button>
-  
-  <section class="scanner">
-    <div class="scanner-heading">
-      <h2>Network Scanner</h2>
-      <div class="scanner-icon">⌁</div>
-    </div>
-    <label for="target">TARGET DOMAIN</label>
-    <input type="text" id="target" placeholder="example.com" autocomplete="off">
-    <button id="pingBtn" type="button">⚡ PING CHECK</button>
-    <button id="nmapBtn" type="button">◈ PORT CHECK</button>
-    <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
-    <div id="result" aria-live="polite">Waiting for diagnostic request...</div>
-    <div class="scan-footer">DANI SCAN ENGINE • AUTHORIZED TESTING ONLY</div>
-  </section>
 
-  <section class="features">
-    <div><h3>⚡ Ping Diagnostics</h3><p>Check HTTP website reachability and response status.</p></div>
-    <div><h3>◈ Port Check</h3><p>Check live status of 6 open ports instantly - 80, 443, 21, 22, 25 and 8080..</p></div>
-    <div><h3>🌐 DNS Lookup</h3><p>Inspect public A, AAAA, MX and NS records.</p></div>
-  </section>
-    <section class="hero">
-    <div class="tag">NETWORK INTELLIGENCE PLATFORM</div>
-    <h1>Advanced Network<br><span class="gradient">Diagnostics</span></h1>
-    <p>Analyze website connectivity and inspect public DNS records with a professional diagnostic interface.</p>
-    <p><b> DANI SCAN - Free network scanner-Free Website Scanner | No Login, No Payment</b></p>
-  </section>
+<button class="back-btn" onclick="goBack()">← Back to Home</button>
+
+<section class="scanner">
+  <div class="scanner-heading">
+    <h2>Network Scanner</h2>
+    <div class="scanner-icon">⌁</div>
+  </div>
+
+  <label for="target">TARGET DOMAIN</label>
+  <input id="target" type="text" placeholder="example.com" autocomplete="off">
+
+  <button id="pingBtn" type="button">⚡ PING CHECK</button>
+  <button id="nmapBtn" type="button">◈ PORT CHECK</button>
+  <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
+
+  <div id="result" aria-live="polite">Waiting for diagnostic request...</div>
+
+  <div class="scan-footer">DANI SCAN ENGINE • AUTHORIZED TESTING ONLY</div>
+</section>
+
+<section class="features">
+  <div>
+    <h3>⚡ Ping Diagnostics</h3>
+    <p>Check HTTP website reachability and response status.</p>
+  </div>
+  <div>
+    <h3>◈ Port Check</h3>
+    <p>Check supported web and network port status.</p>
+  </div>
+  <div>
+    <h3>🌐 DNS Lookup</h3>
+    <p>Inspect public A, AAAA, MX and NS records.</p>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="tag">NETWORK INTELLIGENCE PLATFORM</div>
+  <h1>Advanced Network<br><span class="gradient">Diagnostics</span></h1>
+  <p>Analyze website connectivity and inspect public DNS records with a professional diagnostic interface.</p>
+  <p><b>DANI SCAN - Free Network Scanner | No Login, No Payment</b></p>
+</section>
+
 </main>
 </div>
-<!-- Rating Section Start -->
-<div style="max-width:600px; margin:30px auto; padding:20px; background:#0a0f1e; border:1px solid #00e5ff; border-radius:15px; text-align:center;">
-  <h3 style="color:#fff;">⭐ Rate My Website</h3>
-  <p style="color:#aaa; font-size:14px;">Facing any problem? Give a rating and tell us</p>
-  
-  <div id="stars" style="font-size:35px; cursor:pointer; margin:10px 0;">
+
+<section class="about" id="about">
+  <div style="text-align:center">
+    <img src="/danyal.jpg" alt="Danyal Khan - Dani Scan Creator">
+  </div>
+  <h2>⚡ About the Creator</h2>
+  <p>
+    <b style="color:#22ff88">Danyal Khan</b> is a self-taught
+    <b style="color:white">Ethical Hacker, Bug Bounty Hunter and Web Developer</b>
+    from Dir Upper, Khyber Pakhtunkhwa, Pakistan.
+  </p>
+  <p>
+    He created <b style="color:white">DANI SCAN</b>, a free web-based network
+    diagnostics platform for students, developers and security researchers.
+  </p>
+  <p>
+    🎯 <b>Vision:</b> Making defensive cybersecurity tools accessible to Pakistani youth.
+    <br><br>
+    📍 <b>Location:</b> Dir Upper, KPK, Pakistan
+    <br>
+    🛡 <b>Focus:</b> Bug Bounty Hunting, Web Security and Reconnaissance
+    <br>
+    👽 <b>Bugcrowd:</b>
+    <a href="https://bugcrowd.com/h/HackWithDanyal" target="_blank" rel="noopener noreferrer">HackWithDanyal</a>
+    <br>
+    ✉ <b>Contact:</b>
+    <a href="mailto:dk2008508@gmail.com">dk2008508@gmail.com</a>
+  </p>
+</section>
+
+<section class="rating" id="rating">
+  <h3>⭐ Rate My Website</h3>
+  <p style="color:#aaa">Facing any problem? Give a rating and tell us.</p>
+
+  <div id="stars">
     <span onclick="setRating(1)">☆</span>
     <span onclick="setRating(2)">☆</span>
     <span onclick="setRating(3)">☆</span>
@@ -161,64 +522,97 @@
     <span onclick="setRating(5)">☆</span>
   </div>
 
-  <textarea id="feedbackText" placeholder="Write your problem here..." style="width:90%; height:70px; padding:10px; border-radius:10px; background:#111; color:#fff; border:1px solid #333;"></textarea>
-  <br><br>
-  <button onclick="sendFeedback()" style="padding:10px 25px; background:#00e5ff; border:none; border-radius:20px; font-weight:bold; cursor:pointer;">Send Feedback</button>
-  <p id="thanksMsg" style="color:#00ff88; display:none;">Thank You! Your feedback has been received ❤️</p>
-</div>
+  <textarea id="feedbackText" placeholder="Write your feedback here..."></textarea>
+  <br>
+  <button onclick="sendFeedback()">Send Feedback</button>
+  <p id="thanksMsg" style="display:none;color:#22ff88">Feedback message prepared!</p>
+</section>
 
-<script>
-let myRating = 0;
-function setRating(n){
-  myRating = n;
-  let s = document.getElementById('stars').children;
-  for(let i=0;i<5;i++){ s[i].innerText = i<n ? '★' : '☆'; s[i].style.color = i<n ? '#FFD700' : '#fff'; }
-}
-function sendFeedback(){
-  let msg = document.getElementById('feedbackText').value;
-  if(myRating==0){ alert('Please select stars first!'); return; }
-  let text = "Rating: " + myRating + " Star%0AProblem: " + msg;
-  window.open("https://wa.me/923435315207?text=" + text, "_blank");
-  document.getElementById('thanksMsg').style.display = 'block';
-}
-</script>
-<!-- Rating Section End -->
 <footer>
   <div class="footer-brand">DANI <span>SCAN</span></div>
   <p>Network Diagnostics Platform</p>
   <p>© 2026 DANI SCAN</p>
-  <p>Created by Danyal Khan — Bug Bounty Hunter & Web Developer from Dir Upper, KPK , young developer 17years age</p>
+  <p>Created by Danyal Khan — Bug Bounty Hunter & Web Developer</p>
 </footer>
-  
+
+<!-- AUTHORIZATION MODAL -->
+
+<div id="permissionModal">
+  <div class="permission-card">
+    <h2>🛡 AUTHORIZATION REQUIRED</h2>
+    <p>Only test domains you own or have explicit permission to assess.</p>
+    <label>
+      <input type="checkbox" id="permissionConfirm">
+      I have permission to test this domain.
+    </label>
+    <button id="permissionContinue" disabled>CONTINUE</button>
+    <button id="permissionCancel" class="cancel">CANCEL</button>
+  </div>
+</div>
+
+<script src="/script.js"></script>
+
 <script>
-function goToScanner(){
-  var check = document.getElementById('authorization');
-  if(!check.checked){
-    alert('Please tick the Authorized box first!');
+function goToScanner() {
+  const check = document.getElementById("authorization");
+
+  if (!check.checked) {
+    alert("Please tick the Authorized box first!");
     return;
   }
-  document.getElementById('welcomeScreen').style.display = 'none';
-  document.getElementById('mainScreen').style.display = 'block';
+
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("mainScreen").style.display = "block";
+  closeMenu();
   window.scrollTo(0,0);
 }
-function goBack(){
-  
-}
-<script>
-function openMenu() {
-  document.getElementById('myMenu').style.display = 'block';
-}
-function closeMenu() {
-  document.getElementById('myMenu').style.display = 'none';
-  }
-function closeMenu() {
-  document.getElementById('myMenu').style.display = 'none';
-}
-</script>
-</body>
-</script>
-</body>
-    </html>
-                                                                                                                   
 
-                                                                
+function goBack() {
+  document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "block";
+  window.scrollTo(0,0);
+}
+
+function goHome() {
+  goBack();
+  closeMenu();
+}
+
+function openMenu() {
+  document.getElementById("myMenu").style.display = "block";
+}
+
+function closeMenu() {
+  document.getElementById("myMenu").style.display = "none";
+}
+
+let myRating = 0;
+
+function setRating(n) {
+  myRating = n;
+  const stars = document.getElementById("stars").children;
+
+  for (let i=0; i<5; i++) {
+    stars[i].textContent = i<n ? "★" : "☆";
+    stars[i].style.color = i<n ? "#FFD700" : "#fff";
+  }
+}
+
+function sendFeedback() {
+  if (!myRating) {
+    alert("Please select stars first!");
+    return;
+  }
+
+  const msg = document.getElementById("feedbackText").value.trim();
+
+  const text = encodeURIComponent(
+    "DANI SCAN Feedback\nRating: " + myRating + " Stars\nFeedback: " + msg
+  );
+
+  window.open("https://wa.me/923435315207?text="+text,"_blank");
+}
+</script>
+
+</body>
+</html>
