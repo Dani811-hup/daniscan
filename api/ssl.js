@@ -1,4 +1,3 @@
-
 const tls = require("node:tls");
 const dns = require("node:dns").promises;
 const net = require("node:net");
@@ -117,12 +116,14 @@ module.exports = async (req, res) => {
 
     const result = await new Promise((resolve, reject) => {
       const socket = tls.connect({
-        host: records[0],
+        host: host,
         port: 443,
         servername: host,
         rejectUnauthorized: false,
         timeout: 10000
       });
+
+      socket.setTimeout(10000);
 
       socket.once("secureConnect", () => {
         const cert = socket.getPeerCertificate();
