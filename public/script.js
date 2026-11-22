@@ -276,7 +276,40 @@ if (sslBtn) {
     askPermission(runSSL);
   });
 }
+async function checkSecurityHeaders() {
+  // 1. Apne domain input box aur terminal box ki exact ID yahan likhein
+  const domain = document.getElementById('domainInput').value.trim(); 
+  const terminal = document.getElementById('terminalOutput'); 
 
-// INITIAL MESSAGE
+  if (!domain) {
+    terminal.innerText = '[ ERROR ] Please enter a target domain first!';
+    return;
+  }
 
-showResult("Waiting for diagnostic request...");
+  terminal.innerText = `[ SYSTEM ] Checking Security Headers for ${domain}...\n[ STATUS ] Scanning...`;
+
+  try {
+    const res = await fetch(`/api/headers?domain=${encodeURIComponent(domain)}`);
+    const data = await res.json();
+
+    if (data.error) {
+      terminal.innerText = `[ ERROR ] ${data.error}`;
+      return;
+    }
+
+    let text = `[ TARGET ] ${data.target}\n`;
+    text += `[ SECURITY SCORE ] ${data.score}\n`;
+    text += `────────────────────────────────────\n`;
+
+    data.results.forEach(item => {
+      const sign = item.status === 'PASS' ? '[ PASS ]' : '[ MISSING ]';
+      text += `${sign} ${item.name}\n`;
+    });
+
+    terminal.innerText = text;
+  } catch (err) {
+    terminal.innerText = '[ ERROR ] Connection failed. Try again.';
+  }
+}
+
+
