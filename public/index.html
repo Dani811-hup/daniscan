@@ -184,54 +184,34 @@ main {padding:15px}
   font-size:30px;
 }
 
-/* LINUX STYLE RESULT TERMINAL */
-
 #result {
   position:sticky;
   top:10px;
   z-index:100;
-
   margin-top:12px;
   margin-bottom:18px;
   padding:20px;
-
   width:100%;
   min-height:240px;
   max-height:42vh;
   overflow-y:auto;
-
   white-space:pre-wrap;
   overflow-wrap:anywhere;
-
   background:#000000;
   border:1px solid #22c55e;
   border-radius:10px;
-
   color:#22ff88;
   font-family:"Courier New",monospace;
   font-size:14px;
   line-height:1.8;
-
-  box-shadow:
-    0 0 12px rgba(34,255,136,.12),
-    inset 0 0 15px rgba(0,255,100,.04);
-
+  box-shadow:0 0 12px rgba(34,255,136,.12), inset 0 0 15px rgba(0,255,100,.04);
   scrollbar-width:thin;
   scrollbar-color:#22c55e #050505;
 }
 
-#result::-webkit-scrollbar {
-  width:7px;
-}
-
-#result::-webkit-scrollbar-track {
-  background:#050505;
-}
-
-#result::-webkit-scrollbar-thumb {
-  background:#22c55e;
-  border-radius:10px;
-}
+#result::-webkit-scrollbar {width:7px;}
+#result::-webkit-scrollbar-track {background:#050505;}
+#result::-webkit-scrollbar-thumb {background:#22c55e; border-radius:10px;}
 
 .scanner label {
   display:block;
@@ -254,8 +234,6 @@ main {padding:15px}
 
 #target:focus {border-color:#00e5ff}
 
-/* DIFFERENT BUTTON COLORS */
-
 .scanner button:not(.back-btn) {
   width:100%;
   padding:14px;
@@ -274,80 +252,22 @@ main {padding:15px}
   transform:translateY(-1px);
 }
 
-/* Existing working buttons */
+#pingBtn {background:#087cdb; border-color:#38bdf8;}
+#nmapBtn {background:#7c3aed; border-color:#a78bfa;}
+#dnsBtn {background:#087f5b; border-color:#34d399;}
+#sslBtn {background:#0f766e; border-color:#2dd4bf;}
+#headersBtn {background:#b45309; border-color:#fbbf24;}
+#httpMethodsBtn {background:#1d4ed8; border-color:#60a5fa;}
+#robotsBtn {background:#475569; border-color:#94a3b8;}
+#sitemapBtn {background:#9333ea; border-color:#c084fc;}
+#whoisBtn {background:#be123c; border-color:#fb7185;}
+#ipBtn {background:#0369a1; border-color:#38bdf8;}
+#subdomainBtn {background:#4d7c0f; border-color:#a3e635;}
+#techBtn {background:#6d28d9; border-color:#a78bfa;}
 
-#pingBtn {
-  background:#087cdb;
-  border-color:#38bdf8;
-}
+#futureTools button:disabled {opacity:.8; cursor:not-allowed; filter:saturate(.7);}
 
-#nmapBtn {
-  background:#7c3aed;
-  border-color:#a78bfa;
-}
-
-#dnsBtn {
-  background:#087f5b;
-  border-color:#34d399;
-}
-
-#sslBtn {
-  background:#0f766e;
-  border-color:#2dd4bf;
-}
-
-#headersBtn {
-  background:#b45309;
-  border-color:#fbbf24;
-}
-
-#httpMethodsBtn {
-  background:#1d4ed8;
-  border-color:#60a5fa;
-}
-
-#robotsBtn {
-  background:#475569;
-  border-color:#94a3b8;
-}
-
-#sitemapBtn {
-  background:#9333ea;
-  border-color:#c084fc;
-}
-
-#whoisBtn {
-  background:#be123c;
-  border-color:#fb7185;
-}
-
-#ipBtn {
-  background:#0369a1;
-  border-color:#38bdf8;
-}
-
-#subdomainBtn {
-  background:#4d7c0f;
-  border-color:#a3e635;
-}
-
-#techBtn {
-  background:#6d28d9;
-  border-color:#a78bfa;
-}
-
-#futureTools button:disabled {
-  opacity:.8;
-  cursor:not-allowed;
-  filter:saturate(.7);
-}
-
-.scan-footer {
-  margin-top:18px;
-  color:#8493a9;
-  text-align:center;
-  font-size:11px;
-}
+.scan-footer {margin-top:18px; color:#8493a9; text-align:center; font-size:11px;}
 
 .features {
   display:grid;
@@ -366,27 +286,11 @@ main {padding:15px}
 .features h3 {color:#00e5ff}
 .features p {color:#aab7ca;line-height:1.6;font-size:14px}
 
-.hero {
-  text-align:center;
-  padding:45px 10px;
-}
-
-.tag {
-  color:#00e5ff;
-  font-size:12px;
-  letter-spacing:2px;
-}
-
+.hero {text-align:center; padding:45px 10px;}
+.tag {color:#00e5ff; font-size:12px; letter-spacing:2px;}
 .hero h1 {font-size:36px}
-
-.gradient {
-  color:#00e5ff;
-}
-
-.hero p {
-  color:#aab7ca;
-  line-height:1.7;
-}
+.gradient {color:#00e5ff;}
+.hero p {color:#aab7ca; line-height:1.7;}
 
 .about,.rating {
   background:#0a0f1e;
@@ -397,141 +301,75 @@ main {padding:15px}
 }
 
 .about img {
-  width:160px;
-  height:160px;
-  object-fit:cover;
-  border-radius:50%;
-  border:4px solid #00e5ff;
+  width:160px; height:160px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff;
 }
 
 .about h2,.rating h3 {color:white}
-
-.about p {
-  color:#aab7ca;
-  line-height:1.8;
-  font-size:14px;
-}
-
+.about p {color:#aab7ca; line-height:1.8; font-size:14px;}
 .about a {color:#22ff88}
+#stars {font-size:35px; cursor:pointer;}
+#feedbackText {width:100%; height:85px; background:#111; color:white; border:1px solid #333; border-radius:10px; padding:12px;}
+.rating button {background:#00e5ff; color:black; border:0; border-radius:20px; padding:12px 25px; font-weight:bold; margin-top:15px;}
 
-#stars {
-  font-size:35px;
-  cursor:pointer;
-}
-
-#feedbackText {
-  width:100%;
-  height:85px;
-  background:#111;
-  color:white;
-  border:1px solid #333;
-  border-radius:10px;
-  padding:12px;
-}
-
-.rating button {
-  background:#00e5ff;
-  color:black;
-  border:0;
-  border-radius:20px;
-  padding:12px 25px;
-  font-weight:bold;
-  margin-top:15px;
-}
-
-footer {
-  background:#080e1c;
-  text-align:center;
-  padding:30px 15px;
-  color:#9aa9bd;
-  font-size:13px;
-}
+footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd; font-size:13px;}
 
 #permissionModal {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:999999;
-  background:rgba(0,0,0,.9);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  display:none; position:fixed; inset:0; z-index:999999; background:rgba(0,0,0,.9); align-items:center; justify-content:center; padding:20px;
 }
 
 .permission-card {
-  width:100%;
-  max-width:420px;
-  background:#101b30;
-  border:1px solid #00d9ff;
-  border-radius:18px;
-  padding:24px;
-  color:white;
+  width:100%; max-width:420px; background:#101b30; border:1px solid #00d9ff; border-radius:18px; padding:24px; color:white;
 }
 
 .permission-card h2 {color:#ffc247}
 .permission-card p {color:#b8c5d8;line-height:1.6}
-
-.permission-card label {
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin:22px 0;
-}
-
-.permission-card button {
-  width:100%;
-  padding:14px;
-  border:0;
-  border-radius:10px;
-  margin-top:10px;
-  color:white;
-  background:#087cdb;
-  font-weight:bold;
-}
-
+.permission-card label {display:flex; gap:10px; align-items:center; margin:22px 0;}
+.permission-card button {width:100%; padding:14px; border:0; border-radius:10px; margin-top:10px; color:white; background:#087cdb; font-weight:bold;}
 .permission-card button:disabled {opacity:.4}
 .permission-card .cancel {background:#35425a}
 
 @media(max-width:480px) {
   .hero h1 {font-size:29px}
   .scanner {padding:17px}
-
-  #result {
-    min-height:220px;
-    max-height:40vh;
-    font-size:13px;
-    padding:16px;
-  }
+  #result {min-height:220px; max-height:40vh; font-size:13px; padding:16px;}
 }
 
-/* LOADING SCREEN - 2 LINES - 3 SECOND */
+/* LOADING - FILE TRANSFER STYLE - MOTI GREEN LINES */
 #loader{
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:#000; z-index:9999999;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
-  transition:opacity 0.5s;
+  transition:opacity 0.5s; padding:20px; text-align:center;
 }
-.loader-logo{font-size:42px; font-weight:900; color:white; letter-spacing:2px; text-align:center;}
-.loader-logo span{color:#00ff41; text-shadow:0 0 15px #00ff41;}
-.loader-sub{color:#00ff41; font-family:monospace; font-size:12px; margin:18px 0 22px; letter-spacing:3px;}
-.loader-line-wrap{width:280px; max-width:80%;}
-.loader-line{width:100%; height:5px; background:#1a1a1a; border-radius:10px; overflow:hidden; margin-bottom:12px;}
-.loader-fill{height:100%; width:0%; background:#00ff41; box-shadow:0 0 12px #00ff41; transition:width 0.1s linear;}
-.loader-percent{color:#00ff41; font-family:monospace; margin-top:8px; font-size:14px;}
+.loader-hacker-pic{
+  width:130px; height:130px; object-fit:cover; border-radius:50%;
+  border:4px solid #00ff41; box-shadow:0 0 30px rgba(0,255,65,0.8);
+  margin-bottom:18px;
+}
+.loader-logo{font-size:40px; font-weight:900; color:white; letter-spacing:2px;}
+.loader-logo span{color:#00ff41; text-shadow:0 0 18px #00ff41;}
+.loader-sub{color:#aaa; font-family:monospace; font-size:12px; margin:10px 0 25px; letter-spacing:2px;}
+.loader-sub b{color:#00ff41;}
+.loader-box{width:300px; max-width:85%;}
+.loader-label{ display:flex; justify-content:space-between; color:#00ff41; font-family:monospace; font-size:12px; margin-bottom:6px;}
+.loader-line{width:100%; height:14px; background:#1a1a1a; border:1px solid #00ff41; border-radius:8px; overflow:hidden; margin-bottom:14px;}
+.loader-fill{height:100%; width:0%; background:linear-gradient(90deg,#00ff41,#00ff41,#7dff9a); box-shadow:0 0 15px #00ff41;}
+.loader-percent{color:#00ff41; font-family:monospace; margin-top:5px; font-size:16px; font-weight:bold;}
 </style>
 </head>
 
 <body>
 
-<!-- LOADING SCREEN -->
+<!-- LOADING SCREEN - HACKER PIC + MOTI LINES -->
 <div id="loader">
+  <img class="loader-hacker-pic" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80" alt="Hacker">
   <div class="loader-logo">DANI <span>SCAN</span></div>
-  <div class="loader-sub">INITIALIZING SYSTEM...</div>
-  <div class="loader-line-wrap">
+  <div class="loader-sub">SECURE CONNECTION... <b>LOADING SYSTEM</b></div>
+  <div class="loader-box">
+    <div class="loader-label"><span>TRANSFERRING FILES...</span><span id="loader-percent">0%</span></div>
     <div class="loader-line"><div class="loader-fill" id="fill1"></div></div>
     <div class="loader-line"><div class="loader-fill" id="fill2"></div></div>
   </div>
-  <div class="loader-percent" id="loader-percent">0%</div>
 </div>
 
 <header class="navbar">
@@ -585,8 +423,6 @@ footer {
     <div class="scanner-icon">⌁</div>
   </div>
 
-  <!-- LINUX STYLE RESULTS BOX - MOVED ABOVE ALL BUTTONS -->
-
   <div id="result" aria-live="polite">DANI SCAN TERMINAL
 ────────────────────────────
 [ SYSTEM ] Diagnostic terminal ready.
@@ -596,8 +432,6 @@ footer {
 
   <label for="target">TARGET DOMAIN</label>
   <input id="target" type="text" placeholder="example.com" autocomplete="off">
-
-  <!-- EXISTING WORKING BUTTONS -->
 
   <button id="pingBtn" type="button">⚡ PING CHECK</button>
   <button id="nmapBtn" type="button">◈ PORT CHECK</button>
@@ -677,8 +511,6 @@ footer {
 </section>
 
 <footer>
-<!-- FAQ SECTION - SAFE, SCRIPT KHARAB NAHI HOGA -->
-<!-- FAQ SECTION - ENGLISH - SAFE -->
 <div style="max-width:900px;margin:40px auto;padding:25px;background:#0a100d;border:1px solid #1a2a24;border-radius:16px;">
   <h2 style="font-size:24px;margin-bottom:20px;">❓ Frequently Asked Questions - DANI SCAN</h2>
 
@@ -712,15 +544,11 @@ footer {
     <span style="color:#b9cbc1;">A: Yes, DANI SCAN works perfectly on mobile, tablet and PC.</span>
   </div>
 </div>
-<!-- FAQ END -->
-<!-- FAQ KHATAM -->
   <div class="footer-brand">DANI <span>SCAN</span></div>
   <p>Network Diagnostics Platform</p>
   <p>© 2026 DANI SCAN</p>
   <p>Created by Danyal Khan on 17 NOV 2026 — Bug Bounty Hunter & Web Developer from kpk Dir upper Pakistan</p>
 </footer>
-
-<!-- AUTHORIZATION MODAL -->
 
 <div id="permissionModal">
   <div class="permission-card">
@@ -740,12 +568,10 @@ footer {
 <script>
 function goToScanner() {
   const check = document.getElementById("authorization");
-
   if (!check.checked) {
     alert("Please tick the Authorized box first!");
     return;
   }
-
   document.getElementById("welcomeScreen").style.display = "none";
   document.getElementById("mainScreen").style.display = "block";
   closeMenu();
@@ -776,7 +602,6 @@ let myRating = 0;
 function setRating(n) {
   myRating = n;
   const stars = document.getElementById("stars").children;
-
   for (let i=0; i<5; i++) {
     stars[i].textContent = i<n ? "★" : "☆";
     stars[i].style.color = i<n ? "#FFD700" : "#fff";
@@ -788,22 +613,19 @@ function sendFeedback() {
     alert("Please select stars first!");
     return;
   }
-
   const msg = document.getElementById("feedbackText").value.trim();
-
   const text = encodeURIComponent(
     "DANI SCAN Feedback\nRating: " + myRating + " Stars\nFeedback: " + msg
   );
-
   window.open("https://wa.me/923435315207?text="+text,"_blank");
 }
 </script>
 
 <script>
-// LOADING - 2 LINES - 3 SECOND ME FULL
+// LOADING - FILE TRANSFER - 3 SECOND
 let loadP = 0;
 let loadTimer = setInterval(()=>{
-  loadP += 2; // 3 second me 100%
+  loadP += 2;
   if(loadP >= 100){
     loadP = 100;
     clearInterval(loadTimer);
