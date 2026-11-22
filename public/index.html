@@ -27,7 +27,13 @@
   "url": "https://daniscan.vercel.app/"
 }
 </script>
-<style>
+  <style>
+* {box-sizing:border-box}
+...
+.nav-right{display:flex; align-items:center; gap:12px;}
+.wa-btn{width:42px; height:42px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:22px;}
+  
+
 * {box-sizing:border-box}
 body {margin:0;background:#050914;color:white;font-family:Arial,sans-serif;}
 .navbar {display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#080e1c;border-bottom:1px solid #17263a;}
@@ -126,8 +132,11 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
 </div>
 <header class="navbar">
   <div class="brand">DANI <span>SCAN</span></div>
-  <div class="menu-icon" onclick="openMenu()"><div></div><div></div><div></div></div>
-</header>
+  <div class="nav-right">
+    <a class="wa-btn" href="https://wa.me/923435315207?text=Hi%20Dani%20SCAN!%20I%20want%20Paid%20Service." target="_blank">💬</a>
+    <div class="menu-icon" onclick="openMenu()"><div></div><div></div><div></div></div>
+  </div>
+                                                       </header>
 <nav id="myMenu">
   <div class="menu-close" onclick="closeMenu()">✕</div>
   <h2 style="color:#00e5ff">DANI SCAN</h2>
