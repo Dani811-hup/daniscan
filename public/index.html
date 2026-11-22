@@ -385,7 +385,7 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
   <a href="#" onclick="goHome();return false">Home</a>
   <a href="#" onclick="goToScanner();return false">Network Scanner</a>
   <a href="#about" onclick="closeMenu()">About Creator</a>
-  <a href="#about" onclick="closeMenu()">About us</a>
+  <a href="#" onclick="showAbout();return false">About us</a>
 </nav>
 
 <div class="notice">
@@ -470,6 +470,33 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
 
 </main>
 </div>
+
+<!-- ABOUT US PAGE - SIRF MENU SE KHULEGA, MAIN SCREEN PE NAHI AAYEGA -->
+<div id="aboutPage" style="display:none; padding:15px;">
+  <button class="back-btn" onclick="goHomeFromAbout()">← Back to Home</button>
+  <div style="background:#0a0f1e; border:1px solid #00e5ff; border-radius:18px; padding:25px 18px;">
+    <h2 style="color:#00e5ff; text-align:center;">⚡ About DANI SCAN</h2>
+    <p style="color:#aab7ca; line-height:1.8; font-size:14px; text-align:center;">DANI SCAN Dir Upper, KPK se bana Pakistan ka pehla 100% Free Network Diagnostics Platform hai. Iska maqsad hai ke tamam zaroori security aur network tools ek hi jagah mil jayen.</p>
+
+    <h3 style="color:#00e5ff;">🛠️ Hamare Tools - Tafseel Se</h3>
+    <div style="color:#cbd5e1; font-size:14px; line-height:1.8;">
+      <p><b style="color:#fff;">1. PING CHECK:</b> Ye batata hai ke website zinda hai ya nahi, aur kitni jaldi jawab de rahi hai.</p>
+      <p><b style="color:#fff;">2. PORT CHECK:</b> Ye check karta hai ke website ke kaun se darwaze (ports) khule hain. Khula port hacker ke liye rasta ho sakta hai.</p>
+      <p><b style="color:#fff;">3. DNS LOOKUP:</b> Ye batata hai ke domain kis IP aur kis server se jura hua hai.</p>
+      <p><b style="color:#fff;">4. SSL / TLS CHECK:</b> Ye batata hai ke website ka lock (https) sahi hai ya nahi, aur certificate kab khatam hoga.</p>
+      <p><b style="color:#fff;">5. SECURITY HEADERS CHECK:</b> Ye website ke security guards ko check karta hai.</p>
+      <p><b style="color:#fff;">6. HTTP METHODS CHECK:</b> Ye batata hai ke website kaun se tareeqe istemal kar rahi hai, koi khatarnak to nahi khula.</p>
+      <p><b style="color:#fff;">7. ROBOTS.TXT CHECK:</b> Ye wo file check karta hai jo Google ko batati hai ke kya dikhana hai aur kya chupana hai.</p>
+      <p><b style="color:#fff;">8. SITEMAP CHECK:</b> Website ka poora naksha check karega - Coming Soon.</p>
+      <p><b style="color:#fff;">9. WHOIS LOOKUP:</b> Kisi bhi domain ka malik, kab bana, kab khatam hoga - Coming Soon.</p>
+      <p><b style="color:#fff;">10. PUBLIC IP INFO:</b> Aapka IP, location aur internet company - Coming Soon.</p>
+      <p><b style="color:#fff;">11. SUBDOMAIN DISCOVERY:</b> Website ke chupe hue hisse dhoondta hai - Coming Soon.</p>
+      <p><b style="color:#fff;">12. TECHNOLOGY DETECTION:</b> Batayega website kis cheez se bani hai - Coming Soon.</p>
+    </div>
+    <p style="text-align:center; color:#00ff41; font-weight:bold;">Hamara Target: 50 Tools ek hi jagah!</p>
+  </div>
+</div>
+
 <div style="background:#0a0f1e; border:1px solid #1e293b; border-radius:20px; padding:28px 18px; margin:16px 12px; text-align:left; overflow:hidden; box-sizing:border-box;">
   <div style="text-align:center; margin-bottom:22px;"><img src="/danyal.jpg" alt="Danyal Khan" style="width:180px; height:180px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff; box-shadow:0 0 35px rgba(0,229,255,0.65); display:inline-block;"></div>
   <h2 style="color:#fff; font-size:24px; font-weight:800; margin:0 0 14px 0; line-height:1.3;">⚡ About the Creator</h2>
@@ -574,12 +601,14 @@ function goToScanner() {
   }
   document.getElementById("welcomeScreen").style.display = "none";
   document.getElementById("mainScreen").style.display = "block";
+  document.getElementById("aboutPage").style.display = "none";
   closeMenu();
   window.scrollTo(0,0);
 }
 
 function goBack() {
   document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("aboutPage").style.display = "none";
   document.getElementById("welcomeScreen").style.display = "block";
   window.scrollTo(0,0);
 }
@@ -587,6 +616,20 @@ function goBack() {
 function goHome() {
   goBack();
   closeMenu();
+}
+
+function showAbout(){
+  document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("aboutPage").style.display = "block";
+  closeMenu();
+  window.scrollTo(0,0);
+}
+
+function goHomeFromAbout(){
+  document.getElementById("aboutPage").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "block";
+  window.scrollTo(0,0);
 }
 
 function openMenu() {
