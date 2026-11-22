@@ -276,40 +276,42 @@ if (sslBtn) {
     askPermission(runSSL);
   });
 }
-async function checkSecurityHeaders() {
-  // 1. Apne domain input box aur terminal box ki exact ID yahan likhein
-  const domain = document.getElementById('domainInput').value.trim(); 
-  const terminal = document.getElementById('terminalOutput'); 
+// SECURITY HEADERS CHECK
+const headersBtn = document.getElementById("headersBtn");
 
-  if (!domain) {
-    terminal.innerText = '[ ERROR ] Please enter a target domain first!';
-    return;
-  }
+async function runSecurityHeaders() {
+  const target = getTarget();
+  if (!target) return;
 
-  terminal.innerText = `[ SYSTEM ] Checking Security Headers for ${domain}...\n[ STATUS ] Scanning...`;
+  showResult("Checking Security Headers... Please wait.");
 
   try {
-    const res = await fetch(`/api/headers?domain=${encodeURIComponent(domain)}`);
-    const data = await res.json();
+    const data = await getAPIData(
+      `/api/headers?domain=${encodeURIComponent(target)}`
+    );
 
-    if (data.error) {
-      terminal.innerText = `[ ERROR ] ${data.error}`;
-      return;
-    }
+    const lines = (data.results || []).map(item =>
+      `${item.status === "PASS" ? "[ PASS ]" : "[ MISSING ]"} ${item.name}`
+    ).join("\n");
 
-    let text = `[ TARGET ] ${data.target}\n`;
-    text += `[ SECURITY SCORE ] ${data.score}\n`;
-    text += `────────────────────────────────────\n`;
+    showResult(
+      `SECURITY HEADERS CHECK
 
-    data.results.forEach(item => {
-      const sign = item.status === 'PASS' ? '[ PASS ]' : '[ MISSING ]';
-      text += `${sign} ${item.name}\n`;
-    });
+Target: ${data.target}
+Security Score: ${data.score}
 
-    terminal.innerText = text;
-  } catch (err) {
-    terminal.innerText = '[ ERROR ] Connection failed. Try again.';
+${lines || "No headers returned."}`
+    );
+
+  } catch (error) {
+    showResult("Security Headers check failed: " + error.message);
   }
+}
+
+if (headersBtn) {
+  headersBtn.addEventListener("click", () => {
+    askPermission(runSecurityHeaders);
+  });
 }
 
 
