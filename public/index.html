@@ -4,27 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#050914">
-  
 <title>DANI SCAN - 100% Free Website Scanner | Ping, Port, DNS, IP, SSL, WHOIS & Security Check</title>
 <meta name="description" content="DANI SCAN is a free online website and network diagnostics scanner. Check Ping, Ports, DNS, IP, SSL, WHOIS, Security Headers & Subdomain information. No login or payment required.">
 <meta name="keywords" content="Dani Scan, free website scanner, network scanner, ping checker, port checker, DNS lookup, website diagnostics">
-
 <meta name="author" content="Danyal Khan">
-
 <meta name="google-adsense-account" content="ca-pub-7225530172764220">
-
 <meta name="google-site-verification" content="xjRHD4jSl2NXG-EYxLTCeT0-SxBlofXG2DQpKIKU5s0">
-
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dani Scan">
 <meta property="og:title" content="DANI SCAN - Free Website Scanner">
 <meta property="og:description" content="Free Ip SSl Ping, Port and DNS diagnostics. No login required.">
 <meta property="og:url" content="https://daniscan.vercel.app/">
-
 <link rel="canonical" href="https://daniscan.vercel.app/">
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="/style.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,224 +27,39 @@
   "url": "https://daniscan.vercel.app/"
 }
 </script>
-
 <style>
 * {box-sizing:border-box}
-
-body {
-  margin:0;
-  background:#050914;
-  color:white;
-  font-family:Arial,sans-serif;
-}
-
-.navbar {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:16px 20px;
-  background:#080e1c;
-  border-bottom:1px solid #17263a;
-}
-
-.brand,.footer-brand {
-  font-size:24px;
-  font-weight:900;
-  color:white;
-}
-
+body {margin:0;background:#050914;color:white;font-family:Arial,sans-serif;}
+.navbar {display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#080e1c;border-bottom:1px solid #17263a;}
+.brand,.footer-brand {font-size:24px;font-weight:900;color:white;}
 .brand span,.footer-brand span {color:#00e5ff}
-
-.menu-icon {
-  cursor:pointer;
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  padding:8px;
-}
-
-.menu-icon div {
-  width:26px;
-  height:3px;
-  background:#00e5ff;
-  border-radius:5px;
-}
-
-#myMenu {
-  display:none;
-  position:fixed;
-  top:0;
-  right:0;
-  width:270px;
-  max-width:85%;
-  height:100%;
-  background:#0a0f1e;
-  border-left:1px solid #00e5ff;
-  padding:25px;
-  z-index:99999;
-}
-
-#myMenu a {
-  display:block;
-  padding:15px 5px;
-  color:white;
-  text-decoration:none;
-  border-bottom:1px solid #253047;
-}
-
-.menu-close {
-  text-align:right;
-  font-size:25px;
-  color:#00e5ff;
-  cursor:pointer;
-}
-
-.notice {
-  background:#b90000;
-  color:white;
-  padding:8px;
-  font-size:12px;
-  font-weight:bold;
-  overflow:hidden;
-  white-space:nowrap;
-}
-
+.menu-icon {cursor:pointer;display:flex;flex-direction:column;gap:5px;padding:8px;}
+.menu-icon div {width:26px;height:3px;background:#00e5ff;border-radius:5px;}
+#myMenu {display:none;position:fixed;top:0;right:0;width:270px;max-width:85%;height:100%;background:#0a0f1e;border-left:1px solid #00e5ff;padding:25px;z-index:99999;}
+#myMenu a {display:block;padding:15px 5px;color:white;text-decoration:none;border-bottom:1px solid #253047;}
+.menu-close {text-align:right;font-size:25px;color:#00e5ff;cursor:pointer;}
+.notice {background:#b90000;color:white;padding:8px;font-size:12px;font-weight:bold;overflow:hidden;white-space:nowrap;}
 main {padding:15px}
-
-.warning {
-  background:#111a2c;
-  border:1px solid #ffb52e;
-  border-radius:15px;
-  padding:20px;
-  margin:10px 0 25px;
-}
-
-.warning-title {
-  color:#ffc247;
-  font-size:19px;
-  font-weight:bold;
-}
-
+.warning {background:#111a2c;border:1px solid #ffb52e;border-radius:15px;padding:20px;margin:10px 0 25px;}
+.warning-title {color:#ffc247;font-size:19px;font-weight:bold;}
 .warning p {color:#cbd5e1}
-
-.warning label {
-  display:block;
-  margin-top:15px;
-  font-size:14px;
-}
-
-.continue-btn {
-  width:100%;
-  padding:15px;
-  margin-top:18px;
-  background:#00e5ff;
-  color:#000;
-  border:0;
-  border-radius:10px;
-  font-weight:bold;
-  font-size:16px;
-}
-
+.warning label {display:block;margin-top:15px;font-size:14px;}
+.continue-btn {width:100%;padding:15px;margin-top:18px;background:#00e5ff;color:#000;border:0;border-radius:10px;font-weight:bold;font-size:16px;}
 #mainScreen {display:none}
-
-.back-btn {
-  background:transparent;
-  border:1px solid #34445c;
-  color:white;
-  padding:10px 16px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
-.scanner {
-  background:#0b1425;
-  border:1px solid #00d9ff;
-  border-radius:18px;
-  padding:22px;
-  box-shadow:0 0 20px rgba(0,229,255,.08);
-}
-
-.scanner-heading {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
+.back-btn {background:transparent;border:1px solid #34445c;color:white;padding:10px 16px;border-radius:8px;margin-bottom:15px;}
+.scanner {background:#0b1425;border:1px solid #00d9ff;border-radius:18px;padding:22px;box-shadow:0 0 20px rgba(0,229,255,.08);}
+.scanner-heading {display:flex;align-items:center;justify-content:space-between;}
 .scanner-heading h2 {color:#00e5ff}
-
-.scanner-icon {
-  color:#00e5ff;
-  font-size:30px;
-}
-
-#result {
-  position:sticky;
-  top:10px;
-  z-index:100;
-  margin-top:12px;
-  margin-bottom:18px;
-  padding:20px;
-  width:100%;
-  min-height:240px;
-  max-height:42vh;
-  overflow-y:auto;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  background:#000000;
-  border:1px solid #22c55e;
-  border-radius:10px;
-  color:#22ff88;
-  font-family:"Courier New",monospace;
-  font-size:14px;
-  line-height:1.8;
-  box-shadow:0 0 12px rgba(34,255,136,.12), inset 0 0 15px rgba(0,255,100,.04);
-  scrollbar-width:thin;
-  scrollbar-color:#22c55e #050505;
-}
-
+.scanner-icon {color:#00e5ff;font-size:30px;}
+#result {position:sticky;top:10px;z-index:100;margin-top:12px;margin-bottom:18px;padding:20px;width:100%;min-height:240px;max-height:42vh;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#000000;border:1px solid #22c55e;border-radius:10px;color:#22ff88;font-family:"Courier New",monospace;font-size:14px;line-height:1.8;box-shadow:0 0 12px rgba(34,255,136,.12), inset 0 0 15px rgba(0,255,100,.04);scrollbar-width:thin;scrollbar-color:#22c55e #050505;}
 #result::-webkit-scrollbar {width:7px;}
 #result::-webkit-scrollbar-track {background:#050505;}
 #result::-webkit-scrollbar-thumb {background:#22c55e; border-radius:10px;}
-
-.scanner label {
-  display:block;
-  margin:20px 0 8px;
-  color:#00e5ff;
-  font-size:13px;
-  font-weight:bold;
-}
-
-#target {
-  width:100%;
-  padding:14px;
-  background:#050914;
-  border:1px solid #33445e;
-  border-radius:9px;
-  color:white;
-  font-size:16px;
-  outline:none;
-}
-
+.scanner label {display:block;margin:20px 0 8px;color:#00e5ff;font-size:13px;font-weight:bold;}
+#target {width:100%;padding:14px;background:#050914;border:1px solid #33445e;border-radius:9px;color:white;font-size:16px;outline:none;}
 #target:focus {border-color:#00e5ff}
-
-.scanner button:not(.back-btn) {
-  width:100%;
-  padding:14px;
-  margin-top:12px;
-  border:1px solid transparent;
-  border-radius:9px;
-  color:white;
-  font-weight:bold;
-  font-size:14px;
-  cursor:pointer;
-  transition:.2s ease;
-}
-
-.scanner button:not(.back-btn):hover:not(:disabled) {
-  filter:brightness(1.2);
-  transform:translateY(-1px);
-}
-
+.scanner button:not(.back-btn) {width:100%;padding:14px;margin-top:12px;border:1px solid transparent;border-radius:9px;color:white;font-weight:bold;font-size:14px;cursor:pointer;transition:.2s ease;}
+.scanner button:not(.back-btn):hover:not(:disabled) {filter:brightness(1.2);transform:translateY(-1px);}
 #pingBtn {background:#087cdb; border-color:#38bdf8;}
 #nmapBtn {background:#7c3aed; border-color:#a78bfa;}
 #dnsBtn {background:#087f5b; border-color:#34d399;}
@@ -264,88 +72,37 @@ main {padding:15px}
 #ipBtn {background:#0369a1; border-color:#38bdf8;}
 #subdomainBtn {background:#4d7c0f; border-color:#a3e635;}
 #techBtn {background:#6d28d9; border-color:#a78bfa;}
-
 #futureTools button:disabled {opacity:.8; cursor:not-allowed; filter:saturate(.7);}
-
 .scan-footer {margin-top:18px; color:#8493a9; text-align:center; font-size:11px;}
-
-.features {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:12px;
-  margin-top:25px;
-}
-
-.features div {
-  background:#0b1425;
-  padding:18px;
-  border:1px solid #26364e;
-  border-radius:12px;
-}
-
+.features {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:25px;}
+.features div {background:#0b1425;padding:18px;border:1px solid #26364e;border-radius:12px;}
 .features h3 {color:#00e5ff}
 .features p {color:#aab7ca;line-height:1.6;font-size:14px}
-
 .hero {text-align:center; padding:45px 10px;}
 .tag {color:#00e5ff; font-size:12px; letter-spacing:2px;}
 .hero h1 {font-size:36px}
 .gradient {color:#00e5ff;}
 .hero p {color:#aab7ca; line-height:1.7;}
-
-.about,.rating {
-  background:#0a0f1e;
-  border:1px solid #1e293b;
-  border-radius:18px;
-  padding:25px 18px;
-  margin:25px 12px;
-}
-
-.about img {
-  width:160px; height:160px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff;
-}
-
+.about,.rating {background:#0a0f1e;border:1px solid #1e293b;border-radius:18px;padding:25px 18px;margin:25px 12px;}
+.about img {width:160px; height:160px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff;}
 .about h2,.rating h3 {color:white}
 .about p {color:#aab7ca; line-height:1.8; font-size:14px;}
 .about a {color:#22ff88}
 #stars {font-size:35px; cursor:pointer;}
 #feedbackText {width:100%; height:85px; background:#111; color:white; border:1px solid #333; border-radius:10px; padding:12px;}
 .rating button {background:#00e5ff; color:black; border:0; border-radius:20px; padding:12px 25px; font-weight:bold; margin-top:15px;}
-
 footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd; font-size:13px;}
-
-#permissionModal {
-  display:none; position:fixed; inset:0; z-index:999999; background:rgba(0,0,0,.9); align-items:center; justify-content:center; padding:20px;
-}
-
-.permission-card {
-  width:100%; max-width:420px; background:#101b30; border:1px solid #00d9ff; border-radius:18px; padding:24px; color:white;
-}
-
+#permissionModal {display:none; position:fixed; inset:0; z-index:999999; background:rgba(0,0,0,.9); align-items:center; justify-content:center; padding:20px;}
+.permission-card {width:100%; max-width:420px; background:#101b30; border:1px solid #00d9ff; border-radius:18px; padding:24px; color:white;}
 .permission-card h2 {color:#ffc247}
 .permission-card p {color:#b8c5d8;line-height:1.6}
 .permission-card label {display:flex; gap:10px; align-items:center; margin:22px 0;}
 .permission-card button {width:100%; padding:14px; border:0; border-radius:10px; margin-top:10px; color:white; background:#087cdb; font-weight:bold;}
 .permission-card button:disabled {opacity:.4}
 .permission-card .cancel {background:#35425a}
-
-@media(max-width:480px) {
-  .hero h1 {font-size:29px}
-  .scanner {padding:17px}
-  #result {min-height:220px; max-height:40vh; font-size:13px; padding:16px;}
-}
-
-/* LOADING - FILE TRANSFER STYLE - MOTI GREEN LINES */
-#loader{
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:#000; z-index:9999999;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  transition:opacity 0.5s; padding:20px; text-align:center;
-}
-.loader-hacker-pic{
-  width:130px; height:130px; object-fit:cover; border-radius:50%;
-  border:4px solid #00ff41; box-shadow:0 0 30px rgba(0,255,65,0.8);
-  margin-bottom:18px;
-}
+@media(max-width:480px) {.hero h1 {font-size:29px}.scanner {padding:17px}#result {min-height:220px; max-height:40vh; font-size:13px; padding:16px;}}
+#loader{position:fixed; top:0; left:0; width:100%; height:100%;background:#000; z-index:9999999;display:flex; flex-direction:column; align-items:center; justify-content:center;transition:opacity 0.5s; padding:20px; text-align:center;}
+.loader-hacker-pic{width:130px; height:130px; object-fit:cover; border-radius:50%;border:4px solid #00ff41; box-shadow:0 0 30px rgba(0,255,65,0.8);margin-bottom:18px;}
 .loader-logo{font-size:40px; font-weight:900; color:white; letter-spacing:2px;}
 .loader-logo span{color:#00ff41; text-shadow:0 0 18px #00ff41;}
 .loader-sub{color:#aaa; font-family:monospace; font-size:12px; margin:10px 0 25px; letter-spacing:2px;}
@@ -357,10 +114,7 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
 .loader-percent{color:#00ff41; font-family:monospace; margin-top:5px; font-size:16px; font-weight:bold;}
 </style>
 </head>
-
 <body>
-
-<!-- LOADING SCREEN - HACKER PIC + MOTI LINES -->
 <div id="loader">
   <img class="loader-hacker-pic" src="/joker.jpg" alt="Hacker">
   <div class="loader-logo">DANI <span>SCAN</span></div>
@@ -368,134 +122,59 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
   <div class="loader-box">
    <div class="loader-label"><span>LOADING...</span><span id="loader-percent">0%</span></div>
    <div class="loader-line"><div class="loader-fill" id="fill1"></div></div>
-
   </div>
 </div>
-
 <header class="navbar">
   <div class="brand">DANI <span>SCAN</span></div>
-  <div class="menu-icon" onclick="openMenu()">
-    <div></div><div></div><div></div>
-  </div>
+  <div class="menu-icon" onclick="openMenu()"><div></div><div></div><div></div></div>
 </header>
-
 <nav id="myMenu">
   <div class="menu-close" onclick="closeMenu()">✕</div>
   <h2 style="color:#00e5ff">DANI SCAN</h2>
   <a href="#" onclick="goHome();return false">Home</a>
   <a href="#" onclick="goToScanner();return false">Network Scanner</a>
-  <a href="#about" onclick="closeMenu()">About Creator</a>
+  <a href="#" onclick="showCreator();return false">About Creator</a>
   <a href="#" onclick="showAbout();return false">About us</a>
+  <a href="#" onclick="showRating();return false">⭐ Rate Us</a>
 </nav>
-
-<div class="notice">
-  <marquee scrollamount="5">
-    🎯 My target is to add 50 tools to this website, so you can find all tools in one place.
-  </marquee>
-</div>
-
-<div id="welcomeScreen">
-<main>
-
+<div class="notice"><marquee scrollamount="5">🎯 My target is to add 50 tools to this website, so you can find all tools in one place.</marquee></div>
+<div id="welcomeScreen"><main>
 <section class="warning">
   <div class="warning-title">⚠ AUTHORIZED USE ONLY</div>
   <p>Only test domains you own or have explicit permission to assess.</p>
-  <label>
-    <input type="checkbox" id="authorization">
-    I have authorization to test this domain.
-  </label>
-  <button class="continue-btn" onclick="goToScanner()">
-    CONTINUE TO SCANNER →
-  </button>
+  <label><input type="checkbox" id="authorization"> I have authorization to test this domain.</label>
+  <button class="continue-btn" onclick="goToScanner()">CONTINUE TO SCANNER →</button>
 </section>
-
-</main>
-</div>
-
-<div id="mainScreen">
-<main>
-
+</main></div>
+<div id="mainScreen"><main>
 <button class="back-btn" onclick="goBack()">← Back to Home</button>
-
 <section class="scanner">
-  <div class="scanner-heading">
-    <h2>Network Scanner</h2>
-    <div class="scanner-icon">⌁</div>
-  </div>
-
+  <div class="scanner-heading"><h2>Network Scanner</h2><div class="scanner-icon">⌁</div></div>
   <div id="result" aria-live="polite">DANI SCAN TERMINAL
 ────────────────────────────
 [ SYSTEM ] Diagnostic terminal ready.
 [ STATUS ] Waiting for diagnostic request...
 [ INFO   ] Enter an authorized target below.
 ────────────────────────────</div>
-
   <label for="target">TARGET DOMAIN</label>
   <input id="target" type="text" placeholder="example.com" autocomplete="off">
-
   <button id="pingBtn" type="button">⚡ PING CHECK</button>
   <button id="nmapBtn" type="button">◈ PORT CHECK</button>
   <button id="dnsBtn" type="button">🌐 DNS LOOKUP</button>
   <button id="sslBtn" type="button">🔒 SSL / TLS CHECK</button>
   <button id="headersBtn" type="button"> 🛡 SECURITY HEADERS CHECK</button>
   <button id="methodsBtn" type="button"> 📡 HTTP METHODS CHECK</button>
-  <button id="robotsBtn" type="button">🤖 ROBOTS.TXT CHECK  </button>
-
-    <button id="sitemapBtn" type="button" disabled>
-      🗺 SITEMAP CHECK • COMING SOON
-    </button>
-
-    <button id="whoisBtn" type="button" disabled>
-      🌍 WHOIS DOMAIN LOOKUP • COMING SOON
-    </button>
-
-    <button id="ipBtn" type="button" disabled>
-      🌐 PUBLIC IP INFORMATION • COMING SOON
-    </button>
-
-    <button id="subdomainBtn" type="button" disabled>
-      🔎 SUBDOMAIN DISCOVERY • COMING SOON
-    </button>
-
-    <button id="techBtn" type="button" disabled>
-      💻 TECHNOLOGY DETECTION • COMING SOON
-    </button>
-
-  </div>
- 
-    
+  <button id="robotsBtn" type="button">🤖 ROBOTS.TXT CHECK</button>
+  <button id="sitemapBtn" type="button" disabled>🗺 SITEMAP CHECK • COMING SOON</button>
+  <button id="whoisBtn" type="button" disabled>🌍 WHOIS DOMAIN LOOKUP • COMING SOON</button>
+  <button id="ipBtn" type="button" disabled>🌐 PUBLIC IP INFORMATION • COMING SOON</button>
+  <button id="subdomainBtn" type="button" disabled>🔎 SUBDOMAIN DISCOVERY • COMING SOON</button>
+  <button id="techBtn" type="button" disabled>💻 TECHNOLOGY DETECTION • COMING SOON</button>
 </section>
+</main></div>
 
-</section>
-
-</main>
-</div>
-
-<!-- ABOUT US PAGE - SIRF MENU SE KHULEGA, MAIN SCREEN PE NAHI AAYEGA -->
-<div id="aboutPage" style="display:none; padding:15px;">
-  <button class="back-btn" onclick="goHomeFromAbout()">← Back to Home</button>
-  <div style="background:#0a0f1e; border:1px solid #00e5ff; border-radius:18px; padding:25px 18px;">
-    <h2 style="color:#00e5ff; text-align:center;">⚡ About DANI SCAN</h2>
-    <p style="color:#aab7ca; line-height:1.8; font-size:14px; text-align:center;">DANI SCAN Dir Upper, KPK se bana Pakistan ka pehla 100% Free Network Diagnostics Platform hai. Iska maqsad hai ke tamam zaroori security aur network tools ek hi jagah mil jayen.</p>
-
-    <h3 style="color:#00e5ff;">🛠️ Our Tools - In Detail</h3>
-    <div style="color:#cbd5e1; font-size:14px; line-height:1.9;">
-      <p><b style="color:#fff;">1. PING CHECK:</b> This tool checks if a website is live, online and working or if it is down. It sends a small signal to the website and measures how fast the website replies. If the reply time is low, it means the website is fast. If there is no reply, it means the website is down or blocking the connection. It is the first step to check any website problem.</p>
-      <p><b style="color:#fff;">2. PORT CHECK:</b> Every website has different ports like doors. Some ports are for website (80, 443), some are for email, some are for database. This tool scans and shows which ports are open and which are closed. If an unnecessary port is open, hackers can use it to attack the website. So this tool helps website owners to find and close the risky open ports.</p>
-      <p><b style="color:#fff;">3. DNS LOOKUP:</b> DNS is like a phonebook of the internet. When you type google.com, DNS tells your browser which IP address to go to. This tool shows the A record, CNAME, MX record, TXT record and Name Servers of any domain. It helps developers and security researchers to understand where the website is hosted and how its email and server are connected.</p>
-      <p><b style="color:#fff;">4. SSL / TLS CHECK:</b> SSL is the lock (https) you see in your browser. This tool checks if that lock is real, valid and safe. It shows who issued the certificate, when it was created and when it will expire. If the certificate is expired or wrong, the browser will show "Not Secure" warning and users will not trust the website. So this check is very important for every website.</p>
-      <p><b style="color:#fff;">5. SECURITY HEADERS CHECK:</b> Security Headers are like security guards of a website. They protect the website from clickjacking, XSS attack, data stealing and fake content injection. This tool checks if important headers like Content-Security-Policy, X-Frame-Options, Strict-Transport-Security and X-Content-Type-Options are present or missing. If they are missing, the website is easy to hack.</p>
-      <p><b style="color:#fff;">6. HTTP METHODS CHECK:</b> Websites use different methods to talk to the server like GET to get data, POST to send data, PUT to update and DELETE to delete. This tool checks which methods are allowed on the server. If dangerous methods like PUT, DELETE or TRACE are open, an attacker can upload or delete files. This tool helps to find and block those dangerous methods.</p>
-      <p><b style="color:#fff;">7. ROBOTS.TXT CHECK:</b> Robots.txt is a small file that tells Google and other search engines which page to show in search results and which page to hide like admin page, login page or private folder. This tool checks if this file exists or not, and what is inside it. Sometimes this file also leaks secret admin pages, so checking it is very important for security.</p>
-      <p><b style="color:#fff;">8. SITEMAP CHECK:</b> A Sitemap is the complete map of a website. It lists all pages of the website for Google so Google can find and index them fast. This tool will check if the sitemap exists, if it is working and if all links inside it are correct or broken - Coming Soon.</p>
-      <p><b style="color:#fff;">9. WHOIS LOOKUP:</b> WHOIS shows the full identity of a domain. It tells who is the owner, when the domain was created, when it will expire, which company registered it and which name servers it uses. It is very useful to check if a website is real or fake, and to find scammers - Coming Soon.</p>
-      <p><b style="color:#fff;">10. PUBLIC IP INFO:</b> Every internet user has a public IP address. This tool will show your IP address, your city, country, internet provider (ISP) and your approximate location. It helps you to check if your VPN is working or if your real location is leaking - Coming Soon.</p>
-      <p><b style="color:#fff;">11. SUBDOMAIN DISCOVERY:</b> Big websites have many small parts like blog.site.com, shop.site.com, admin.site.com. These are called subdomains. Hackers often attack these hidden subdomains because owners forget them. This tool will find all hidden subdomains of any website - Coming Soon.</p>
-      <p><b style="color:#fff;">12. TECHNOLOGY DETECTION:</b> Every website is made with some technology like WordPress, React, PHP, Cloudflare or Nginx. This tool will detect which technology, CMS, server and framework the website is using. It helps security researchers to know which old and vulnerable version the website is using - Coming Soon.</p>
-    </div>
-    <p style="text-align:center; color:#00ff41; font-weight:bold;">Our Target: 50 Tools in One Place - All Free, No Login, No Payment!</p>
-  </div>
-
+<!-- HOME BOTTOM - ABOUT CREATOR + HERO + RATING + FOOTER - YE SAB HOME PAGE PE RAHEGA -->
+<div id="homeBottom">
 <div style="background:#0a0f1e; border:1px solid #1e293b; border-radius:20px; padding:28px 18px; margin:16px 12px; text-align:left; overflow:hidden; box-sizing:border-box;">
   <div style="text-align:center; margin-bottom:22px;"><img src="/danyal.jpg" alt="Danyal Khan" style="width:180px; height:180px; object-fit:cover; border-radius:50%; border:4px solid #00e5ff; box-shadow:0 0 35px rgba(0,229,255,0.65); display:inline-block;"></div>
   <h2 style="color:#fff; font-size:24px; font-weight:800; margin:0 0 14px 0; line-height:1.3;">⚡ About the Creator</h2>
@@ -518,167 +197,131 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
   <h1>Advanced Network<br><span class="gradient">Diagnostics</span></h1>
   <p>Analyze website connectivity and inspect public DNS records with a professional diagnostic interface.</p>
   <p><b>DANI SCAN - Free Network Scanner | No Login, No Payment</b></p>
+</section>
 <section class="rating" id="rating">
   <h3>⭐ Rate My Website</h3>
   <p style="color:#aaa">Facing any problem? Give a rating and tell us.</p>
-
-  <div id="stars">
-    <span onclick="setRating(1)">☆</span>
-    <span onclick="setRating(2)">☆</span>
-    <span onclick="setRating(3)">☆</span>
-    <span onclick="setRating(4)">☆</span>
-    <span onclick="setRating(5)">☆</span>
-  </div>
-
-  <textarea id="feedbackText" placeholder="Write your feedback here..."></textarea>
-  <br>
+  <div id="stars"><span onclick="setRating(1)">☆</span><span onclick="setRating(2)">☆</span><span onclick="setRating(3)">☆</span><span onclick="setRating(4)">☆</span><span onclick="setRating(5)">☆</span></div>
+  <textarea id="feedbackText" placeholder="Write your feedback here..."></textarea><br>
   <button onclick="sendFeedback()">Send Feedback</button>
   <p id="thanksMsg" style="display:none;color:#22ff88">Feedback message prepared!</p>
 </section>
-
 <footer>
 <div style="max-width:900px;margin:40px auto;padding:25px;background:#0a100d;border:1px solid #1a2a24;border-radius:16px;">
   <h2 style="font-size:24px;margin-bottom:20px;">❓ Frequently Asked Questions - DANI SCAN</h2>
-
-  <div style="margin-bottom:18px;">
-    <b style="color:#00ff88;">Q: Is DANI SCAN a Free Website Scanner?</b><br>
-    <span style="color:#b9cbc1;">A: Yes, DANI SCAN is a 100% Free Website Scanner Online. No payment, no hidden charges, forever free.</span>
-  </div>
-
-  <div style="margin-bottom:18px;">
-    <b style="color:#00ff88;">Q: Do I need to login to use DANI SCAN?</b><br>
-    <span style="color:#b9cbc1;">A: No. No Login, No Sign Up, No Registration required. Just open the website and start scanning.</span>
-  </div>
-
-  <div style="margin-bottom:18px;">
-    <b style="color:#00ff88;">Q: What can I check with DANI SCAN?</b><br>
-    <span style="color:#b9cbc1;">A: You can check Ping, Port Scanner and DNS Lookup for any website in seconds.</span>
-  </div>
-
-  <div style="margin-bottom:18px;">
-    <b style="color:#00ff88;">Q: Who created DANI SCAN?</b><br>
-    <span style="color:#b9cbc1;">A: DANI SCAN was created by Danyal Khan, a 17-year-old self-taught Ethical Hacker from Dir Upper, Khyber Pakhtunkhwa, Pakistan.</span>
-  </div>
-
-  <div style="margin-bottom:18px;">
-    <b style="color:#00ff88;">Q: Is DANI SCAN safe to use?</b><br>
-    <span style="color:#b9cbc1;">A: Yes, it is 100% safe and legal. It is made for learning, testing and protecting websites.</span>
-  </div>
-
-  <div>
-    <b style="color:#00ff88;">Q: Does it work on mobile?</b><br>
-    <span style="color:#b9cbc1;">A: Yes, DANI SCAN works perfectly on mobile, tablet and PC.</span>
-  </div>
+  <div style="margin-bottom:18px;"><b style="color:#00ff88;">Q: Is DANI SCAN a Free Website Scanner?</b><br><span style="color:#b9cbc1;">A: Yes, DANI SCAN is a 100% Free Website Scanner Online. No payment, no hidden charges, forever free.</span></div>
+  <div style="margin-bottom:18px;"><b style="color:#00ff88;">Q: Do I need to login to use DANI SCAN?</b><br><span style="color:#b9cbc1;">A: No. No Login, No Sign Up, No Registration required. Just open the website and start scanning.</span></div>
+  <div style="margin-bottom:18px;"><b style="color:#00ff88;">Q: What can I check with DANI SCAN?</b><br><span style="color:#b9cbc1;">A: You can check Ping, Port Scanner and DNS Lookup for any website in seconds.</span></div>
+  <div style="margin-bottom:18px;"><b style="color:#00ff88;">Q: Who created DANI SCAN?</b><br><span style="color:#b9cbc1;">A: DANI SCAN was created by Danyal Khan, a 17-year-old self-taught Ethical Hacker from Dir Upper, Khyber Pakhtunkhwa, Pakistan.</span></div>
+  <div style="margin-bottom:18px;"><b style="color:#00ff88;">Q: Is DANI SCAN safe to use?</b><br><span style="color:#b9cbc1;">A: Yes, it is 100% safe and legal. It is made for learning, testing and protecting websites.</span></div>
+  <div><b style="color:#00ff88;">Q: Does it work on mobile?</b><br><span style="color:#b9cbc1;">A: Yes, DANI SCAN works perfectly on mobile, tablet and PC.</span></div>
 </div>
   <div class="footer-brand">DANI <span>SCAN</span></div>
   <p>Network Diagnostics Platform</p>
   <p>© 2026 DANI SCAN</p>
   <p>Created by Danyal Khan on 17 NOV 2026 — Bug Bounty Hunter & Web Developer from kpk Dir upper Pakistan</p>
 </footer>
+</div>
 
-<div id="permissionModal">
-  <div class="permission-card">
-    <h2>🛡 AUTHORIZATION REQUIRED</h2>
-    <p>Only test domains you own or have explicit permission to assess.</p>
-    <label>
-      <input type="checkbox" id="permissionConfirm">
-      I have permission to test this domain.
-    </label>
-    <button id="permissionContinue" disabled>CONTINUE</button>
-    <button id="permissionCancel" class="cancel">CANCEL</button>
+<!-- ABOUT US PAGE - SIRF MENU SE KHULEGA -->
+<div id="aboutPage" style="display:none; padding:15px;">
+  <button class="back-btn" onclick="goHomeFromAbout()">← Back to Home</button>
+  <div style="background:#0a0f1e; border:1px solid #00e5ff; border-radius:18px; padding:25px 18px;">
+    <h2 style="color:#00e5ff; text-align:center;">⚡ About DANI SCAN</h2>
+    <p style="color:#aab7ca; line-height:1.8; font-size:14px; text-align:center;">DANI SCAN is the first 100% Free Network Diagnostics Platform from Dir Upper, KPK, Pakistan. Our goal is to bring all essential security and network tools together in one place.</p>
+    <h3 style="color:#00e5ff;">🛠️ Our Tools - In Detail</h3>
+    <div style="color:#cbd5e1; font-size:14px; line-height:1.9;">
+      <p><b style="color:#fff;">1. PING CHECK:</b> This tool checks if a website is live, online and working or if it is down. It sends a small signal to the website and measures how fast the website replies. If the reply time is low, it means the website is fast. If there is no reply, it means the website is down or blocking the connection. It is the first step to check any website problem.</p>
+      <p><b style="color:#fff;">2. PORT CHECK:</b> Every website has different ports like doors. Some ports are for website (80, 443), some are for email, some are for database. This tool scans and shows which ports are open and which are closed. If an unnecessary port is open, hackers can use it to attack the website. So this tool helps website owners to find and close the risky open ports.</p>
+      <p><b style="color:#fff;">3. DNS LOOKUP:</b> DNS is like a phonebook of the internet. When you type google.com, DNS tells your browser which IP address to go to. This tool shows the A record, CNAME, MX record, TXT record and Name Servers of any domain. It helps developers and security researchers to understand where the website is hosted and how its email and server are connected.</p>
+      <p><b style="color:#fff;">4. SSL / TLS CHECK:</b> SSL is the lock (https) you see in your browser. This tool checks if that lock is real, valid and safe. It shows who issued the certificate, when it was created and when it will expire. If the certificate is expired or wrong, the browser will show "Not Secure" warning and users will not trust the website. So this check is very important for every website.</p>
+      <p><b style="color:#fff;">5. SECURITY HEADERS CHECK:</b> Security Headers are like security guards of a website. They protect the website from clickjacking, XSS attack, data stealing and fake content injection. This tool checks if important headers like Content-Security-Policy, X-Frame-Options, Strict-Transport-Security and X-Content-Type-Options are present or missing. If they are missing, the website is easy to hack.</p>
+      <p><b style="color:#fff;">6. HTTP METHODS CHECK:</b> Websites use different methods to talk to the server like GET to get data, POST to send data, PUT to update and DELETE to delete. This tool checks which methods are allowed on the server. If dangerous methods like PUT, DELETE or TRACE are open, an attacker can upload or delete files. This tool helps to find and block those dangerous methods.</p>
+      <p><b style="color:#fff;">7. ROBOTS.TXT CHECK:</b> Robots.txt is a small file that tells Google and other search engines which page to show in search results and which page to hide like admin page, login page or private folder. This tool checks if this file exists or not, and what is inside it. Sometimes this file also leaks secret admin pages, so checking it is very important for security.</p>
+      <p><b style="color:#fff;">8. SITEMAP CHECK:</b> A Sitemap is the complete map of a website. It lists all pages of the website for Google so Google can find and index them fast. This tool will check if the sitemap exists, if it is working and if all links inside it are correct or broken - Coming Soon.</p>
+      <p><b style="color:#fff;">9. WHOIS LOOKUP:</b> WHOIS shows the full identity of a domain. It tells who is the owner, when the domain was created, when it will expire, which company registered it and which name servers it uses. It is very useful to check if a website is real or fake, and to find scammers - Coming Soon.</p>
+      <p><b style="color:#fff;">10. PUBLIC IP INFO:</b> Every internet user has a public IP address. This tool will show your IP address, your city, country, internet provider (ISP) and your approximate location. It helps you to check if your VPN is working or if your real location is leaking - Coming Soon.</p>
+      <p><b style="color:#fff;">11. SUBDOMAIN DISCOVERY:</b> Big websites have many small parts like blog.site.com, shop.site.com, admin.site.com. These are called subdomains. Hackers often attack these hidden subdomains because owners forget them. This tool will find all hidden subdomains of any website - Coming Soon.</p>
+      <p><b style="color:#fff;">12. TECHNOLOGY DETECTION:</b> Every website is made with some technology like WordPress, React, PHP, Cloudflare or Nginx. This tool will detect which technology, CMS, server and framework the website is using. It helps security researchers to know which old and vulnerable version the website is using - Coming Soon.</p>
+    </div>
+    <p style="text-align:center; color:#00ff41; font-weight:bold;">Our Target: 50 Tools in One Place - All Free, No Login, No Payment!</p>
   </div>
 </div>
 
+<div id="permissionModal"><div class="permission-card"><h2>🛡 AUTHORIZATION REQUIRED</h2><p>Only test domains you own or have explicit permission to assess.</p><label><input type="checkbox" id="permissionConfirm"> I have permission to test this domain.</label><button id="permissionContinue" disabled>CONTINUE</button><button id="permissionCancel" class="cancel">CANCEL</button></div></div>
 <script src="/script.js"></script>
-
 <script>
 function goToScanner() {
   const check = document.getElementById("authorization");
-  if (!check.checked) {
-    alert("Please tick the Authorized box first!");
-    return;
-  }
+  if (!check.checked) { alert("Please tick the Authorized box first!"); return; }
   document.getElementById("welcomeScreen").style.display = "none";
   document.getElementById("mainScreen").style.display = "block";
   document.getElementById("aboutPage").style.display = "none";
-  closeMenu();
-  window.scrollTo(0,0);
+  document.getElementById("homeBottom").style.display = "block";
+  closeMenu(); window.scrollTo(0,0);
 }
-
 function goBack() {
   document.getElementById("mainScreen").style.display = "none";
-  document.getElementById("aboutPage").style.display = "none";
   document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("aboutPage").style.display = "none";
+  document.getElementById("homeBottom").style.display = "block";
   window.scrollTo(0,0);
 }
-
-function goHome() {
-  goBack();
-  closeMenu();
-}
-
+function goHome() { goBack(); closeMenu(); }
+function openMenu() { document.getElementById("myMenu").style.display = "block"; }
+function closeMenu() { document.getElementById("myMenu").style.display = "none"; }
 function showAbout(){
   document.getElementById("welcomeScreen").style.display = "none";
   document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("homeBottom").style.display = "none";
   document.getElementById("aboutPage").style.display = "block";
-  closeMenu();
-  window.scrollTo(0,0);
+  closeMenu(); window.scrollTo(0,0);
 }
-
 function goHomeFromAbout(){
   document.getElementById("aboutPage").style.display = "none";
   document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("homeBottom").style.display = "block";
   window.scrollTo(0,0);
 }
-
-function openMenu() {
-  document.getElementById("myMenu").style.display = "block";
+function showCreator(){
+  document.getElementById("aboutPage").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("homeBottom").style.display = "block";
+  closeMenu(); window.scrollTo(0,0);
+  setTimeout(()=>{ window.scrollTo(0, 600); }, 100);
 }
-
-function closeMenu() {
-  document.getElementById("myMenu").style.display = "none";
+function showRating(){
+  document.getElementById("aboutPage").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "block";
+  document.getElementById("mainScreen").style.display = "none";
+  document.getElementById("homeBottom").style.display = "block";
+  closeMenu(); window.scrollTo(0,0);
+  setTimeout(()=>{ document.getElementById("rating").scrollIntoView({behavior:"smooth"}); }, 150);
 }
-
 let myRating = 0;
-
 function setRating(n) {
   myRating = n;
   const stars = document.getElementById("stars").children;
-  for (let i=0; i<5; i++) {
-    stars[i].textContent = i<n ? "★" : "☆";
-    stars[i].style.color = i<n ? "#FFD700" : "#fff";
-  }
+  for (let i=0; i<5; i++) { stars[i].textContent = i<n ? "★" : "☆"; stars[i].style.color = i<n ? "#FFD700" : "#fff"; }
 }
-
 function sendFeedback() {
-  if (!myRating) {
-    alert("Please select stars first!");
-    return;
-  }
+  if (!myRating) { alert("Please select stars first!"); return; }
   const msg = document.getElementById("feedbackText").value.trim();
-  const text = encodeURIComponent(
-    "DANI SCAN Feedback\nRating: " + myRating + " Stars\nFeedback: " + msg
-  );
+  const text = encodeURIComponent("DANI SCAN Feedback\nRating: " + myRating + " Stars\nFeedback: " + msg);
   window.open("https://wa.me/923435315207?text="+text,"_blank");
 }
 </script>
-
 <script>
-// LOADING - FILE TRANSFER - 3 SECOND
 let loadP = 0;
 let loadTimer = setInterval(()=>{
   loadP += 2;
   if(loadP >= 100){
-    loadP = 100;
-    clearInterval(loadTimer);
-    setTimeout(()=>{
-      let loader = document.getElementById('loader');
-      loader.style.opacity = '0';
-      setTimeout(()=>{ loader.style.display = 'none'; }, 500);
-    }, 200);
+    loadP = 100; clearInterval(loadTimer);
+    setTimeout(()=>{ let loader = document.getElementById('loader'); loader.style.opacity = '0'; setTimeout(()=>{ loader.style.display = 'none'; }, 500); }, 200);
   }
   document.getElementById('fill1').style.width = loadP + '%';
- document.getElementById('loader-percent').textContent = loadP + '%';
+  document.getElementById('loader-percent').textContent = loadP + '%';
 }, 40);
 </script>
 </body>
