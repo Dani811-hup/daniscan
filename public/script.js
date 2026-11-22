@@ -314,4 +314,41 @@ if (headersBtn) {
   });
 }
 
+// HTTP METHODS CHECK
+const methodsBtn = document.getElementById("methodsBtn");
+
+async function runHttpMethods() {
+  const target = getTarget();
+  if (!target) return;
+
+  showResult("Checking allowed HTTP methods... Please wait.");
+
+  try {
+    const data = await getAPIData(
+      `/api/methods?domain=${encodeURIComponent(target)}`
+    );
+
+    const list = (data.methods || []).map(m => `[ ALLOWED ] ${m}`).join("\n");
+
+    showResult(
+      `HTTP METHODS CHECK
+
+Target: ${data.target}
+HTTP Status: ${data.statusCode}
+
+${list}
+
+Security Note: ${data.securityNote}`
+    );
+
+  } catch (error) {
+    showResult("HTTP Methods check failed: " + error.message);
+  }
+}
+
+if (methodsBtn) {
+  methodsBtn.addEventListener("click", () => {
+    askPermission(runHttpMethods);
+  });
+}
 
