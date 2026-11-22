@@ -366,9 +366,9 @@ footer {background:#080e1c; text-align:center; padding:30px 15px; color:#9aa9bd;
   <div class="loader-logo">DANI <span>SCAN</span></div>
   <div class="loader-sub">SECURE CONNECTION... <b>LOADING SYSTEM</b></div>
   <div class="loader-box">
-    <div class="loader-label"><span>TRANSFERRING FILES...</span><span id="loader-percent">0%</span></div>
-    <div class="loader-line"><div class="loader-fill" id="fill1"></div></div>
-    <div class="loader-line"><div class="loader-fill" id="fill2"></div></div>
+   <div class="loader-label"><span>LOADING...</span><span id="loader-percent">0%</span></div>
+   <div class="loader-line"><div class="loader-fill" id="fill1"></div></div>
+
   </div>
 </div>
 
@@ -636,8 +636,7 @@ let loadTimer = setInterval(()=>{
     }, 200);
   }
   document.getElementById('fill1').style.width = loadP + '%';
-  document.getElementById('fill2').style.width = loadP + '%';
-  document.getElementById('loader-percent').textContent = loadP + '%';
+ document.getElementById('loader-percent').textContent = loadP + '%';
 }, 60);
 </script>
 </body>
