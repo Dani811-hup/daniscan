@@ -352,3 +352,44 @@ if (methodsBtn) {
   });
 }
 
+async function checkRobots() {
+  const domainInput = document.getElementById('target-domain').value.trim(); // Apne input ki ID check kar lein
+  const terminalOutput = document.getElementById('terminal-output'); // Apne terminal div ki ID check kar lein
+
+  if (!domainInput) {
+    terminalOutput.innerHTML = `<span style="color: #ff4d4d;">[ ERROR ] Pehle target domain enter karein!</span>`;
+    return;
+  }
+
+  terminalOutput.innerHTML = `<span style="color: #00ffcc;">[ SCANNING ] ${domainInput} ki robots.txt check ki ja rahi hai...</span>`;
+
+  try {
+    const res = await fetch(`/api/robots?domain=${encodeURIComponent(domainInput)}`);
+    const data = await res.json();
+
+    if (data.exists) {
+      terminalOutput.innerHTML = `
+        <div class="robots-result">
+          <p style="color: #00ff66;">[ SUCCESS ] robots.txt File Mil Gayi:</p>
+          <pre class="robots-content">${escapeHTML(data.content)}</pre>
+        </div>
+      `;
+    } else {
+      terminalOutput.innerHTML = `<span style="color: #ffcc00;">[ INFO ] ${data.message || data.error}</span>`;
+    }
+  } catch (err) {
+    terminalOutput.innerHTML = `<span style="color: #ff4d4d;">[ ERROR ] Server se response nahi mila.</span>`;
+  }
+}
+
+// Security ke liye HTML tags ko safe rakhne ka function
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag]));
+}
+
