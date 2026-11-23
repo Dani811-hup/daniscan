@@ -352,44 +352,45 @@ if (methodsBtn) {
   });
 }
 
-async function checkRobots() {
-  const domainInput = document.getElementById('target-domain').value.trim(); // Apne input ki ID check kar lein
-  const terminalOutput = document.getElementById('terminal-output'); // Apne terminal div ki ID check kar lein
+// ROBOTS.TXT CHECK
+const robotsBtn = document.getElementById("robotsBtn");
 
-  if (!domainInput) {
-    terminalOutput.innerHTML = `<span style="color: #ff4d4d;">[ ERROR ] Pehle target domain enter karein!</span>`;
-    return;
-  }
+async function runRobots() {
+  const target = getTarget();
+  if (!target) return;
 
-  terminalOutput.innerHTML = `<span style="color: #00ffcc;">[ SCANNING ] ${domainInput} ki robots.txt check ki ja rahi hai...</span>`;
+  showResult("Checking robots.txt file... Please wait.");
 
   try {
-    const res = await fetch(`/api/robots?domain=${encodeURIComponent(domainInput)}`);
-    const data = await res.json();
+    const data = await getAPIData(
+      `/api/robots?domain=${encodeURIComponent(target)}`
+    );
 
     if (data.exists) {
-      terminalOutput.innerHTML = `
-        <div class="robots-result">
-          <p style="color: #00ff66;">[ SUCCESS ] robots.txt File Mil Gayi:</p>
-          <pre class="robots-content">${escapeHTML(data.content)}</pre>
-        </div>
-      `;
+      showResult(
+        `ROBOTS.TXT CHECK
+
+Target: ${target}
+Status: Found (200 OK)
+
+${data.content}`
+      );
     } else {
-      terminalOutput.innerHTML = `<span style="color: #ffcc00;">[ INFO ] ${data.message || data.error}</span>`;
+      showResult(
+        `ROBOTS.TXT CHECK
+
+Target: ${target}
+Status: ${data.message || "robots.txt not found"}`
+      );
     }
-  } catch (err) {
-    terminalOutput.innerHTML = `<span style="color: #ff4d4d;">[ ERROR ] Server se response nahi mila.</span>`;
+
+  } catch (error) {
+    showResult("Robots.txt check failed: " + error.message);
   }
 }
 
-// Security ke liye HTML tags ko safe rakhne ka function
-function escapeHTML(str) {
-  return str.replace(/[&<>'"]/g, tag => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    "'": '&#39;',
-    '"': '&quot;'
-  }[tag]));
+if (robotsBtn) {
+  robotsBtn.addEventListener("click", () => {
+    askPermission(runRobots);
+  });
 }
-
