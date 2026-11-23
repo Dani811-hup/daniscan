@@ -571,3 +571,36 @@ footer {
 #sitemapBtn:active {
   transform: scale(0.98);
 }
+
+/* DANI SCAN - WHOIS LOOKUP BUTTON */
+#whoisBtn {
+  display: block !important;
+  width: 100% !important;
+  min-height: 64px;
+  margin: 14px 0 20px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+
+  background: linear-gradient(110deg, #2563eb, #1d4ed8) !important;
+  color: #ffffff !important;
+
+  border: 2px solid #22d3ee !important;
+  border-radius: 16px !important;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.18);
+}
+
+#whoisBtn:hover {
+  background: linear-gradient(110deg, #1d4ed8, #1e40af) !important;
+}
+
+#whoisBtn:active {
+  transform: scale(0.98);
+}
+
