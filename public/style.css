@@ -507,26 +507,34 @@ footer {
 }
 
 
-/* Robots.txt Result Styling */
-.robots-result {
-  margin-top: 10px;
-  text-align: left;
+/* DANI SCAN - ROBOTS.TXT BUTTON */
+#robotsBtn {
+  display: block !important;
+  width: 100% !important;
+  min-height: 64px;
+  margin: 14px 0 20px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+
+  background: linear-gradient(110deg, #0d9488, #0284c7) !important;
+  color: #ffffff !important;
+
+  border: 2px solid #22d3ee !important;
+  border-radius: 16px !important;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: center;
+
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.18);
 }
 
-.robots-content {
-  background-color: #0a0f14;
-  color: #00ff66;
-  border: 1px solid #1f2d3d;
-  border-radius: 6px;
-  padding: 12px;
-  margin-top: 8px;
-  font-family: monospace;
-  font-size: 13px;
-  line-height: 1.5;
-  max-height: 300px; /* Zyada lambi file ho to scroll bar aa jayega */
-  overflow-y: auto;
-  white-space: pre-wrap; /* Lambi lines khud neeche wali line mein aa jayengi */
-  word-wrap: break-word;
+#robotsBtn:hover {
+  background: linear-gradient(110deg, #0f766e, #0369a1) !important;
 }
 
-
+#robotsBtn:active {
+  transform: scale(0.98);
+}
