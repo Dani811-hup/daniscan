@@ -6,16 +6,29 @@ export default async function handler(req, res) {
   }
 
   const cleanDomain = domain.replace(/^https?:\/\//, "").replace(/\/.*$/, "").toLowerCase();
+  const tld = cleanDomain.split(".").pop();
+
+  // Direct fast RDAP servers for common TLDs
+  let rdapUrl = `https://rdap.org{encodeURIComponent(cleanDomain)}`;
+  if (tld === "com" || tld === "net") {
+    rdapUrl = `https://verisign.com{tld}/v1/domain/${encodeURIComponent(cleanDomain)}`;
+  } else if (tld === "org") {
+    rdapUrl = `https://publicinterestregistry.org{encodeURIComponent(cleanDomain)}`;
+  }
 
   try {
-    // RDAP API (Free & Official WHOIS replacement)
-    const response = await fetch(`https://rdap.org{encodeURIComponent(cleanDomain)}`);
+    const response = await fetch(rdapUrl, {
+      headers: {
+        "Accept": "application/rdap+json, application/json",
+        "User-Agent": "DaniScan-NetworkDiagnostic/1.0"
+      }
+    });
 
     if (!response.ok) {
       if (response.status === 404) {
-        return res.status(404).json({ error: "Domain not found or TLD not supported by RDAP." });
+        return res.status(404).json({ error: "Domain is not registered or not found." });
       }
-      return res.status(response.status).json({ error: `WHOIS lookup failed (HTTP ${response.status})` });
+      return res.status(response.status).json({ error: `Registry returned HTTP ${response.status}` });
     }
 
     const data = await response.json();
@@ -29,10 +42,10 @@ export default async function handler(req, res) {
     // Registrar ka naam nikalein
     let registrar = "Unknown";
     const registrarEntity = (data.entities || []).find(e => (e.roles || []).includes("registrar"));
-    if (registrarEntity && registrarEntity.vcardArray && registrarEntity.vcardArray) {
-      const fnField = registrarEntity.vcardArray.find(item => item === "fn");
-      if (fnField && fnField) {
-        registrar = fnField;
+    if (registrarEntity && registrarEntity.vcardArray && Array.isArray(registrarEntity.vcardArray[1])) {
+      const fnField = registrarEntity.vcardArray[1].find(item => item[0] === "fn");
+      if (fnField && fnField[3]) {
+        registrar = fnField[3];
       }
     }
 
@@ -45,16 +58,16 @@ export default async function handler(req, res) {
     return res.status(200).json({
       domain: data.ldhName || cleanDomain.toUpperCase(),
       registrar,
-      createdDate: createdEvent ? createdEvent.eventDate.split("T") : "N/A",
-      expiryDate: expiryEvent ? expiryEvent.eventDate.split("T") : "N/A",
-      updatedDate: updatedEvent ? updatedEvent.eventDate.split("T") : "N/A",
+      createdDate: createdEvent ? createdEvent.eventDate.split("T")[0] : "N/A",
+      expiryDate: expiryEvent ? expiryEvent.eventDate.split("T")[0] : "N/A",
+      updatedDate: updatedEvent ? updatedEvent.eventDate.split("T")[0] : "N/A",
       statuses,
       nameServers
     });
 
   } catch (error) {
     return res.status(500).json({
-      error: "Could not fetch WHOIS details. Please try again."
+      error: "Connection failed: " + error.message
     });
   }
 }
