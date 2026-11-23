@@ -394,3 +394,53 @@ if (robotsBtn) {
     askPermission(runRobots);
   });
 }
+
+
+// SITEMAP CHECK
+const sitemapBtn = document.getElementById("sitemapBtn");
+
+async function runSitemap() {
+  const target = getTarget();
+  if (!target) return;
+
+  showResult("Checking XML Sitemap... Please wait.");
+
+  try {
+    const data = await getAPIData(
+      `/api/sitemap?domain=${encodeURIComponent(target)}`
+    );
+
+    if (data.exists) {
+      const linksList = (data.sampleUrls || []).join("\n");
+      const moreNote = data.totalUrls > 15 ? `\n...and ${data.totalUrls - 15} more URLs` : "";
+
+      showResult(
+        `SITEMAP CHECK
+
+Target: ${target}
+Status: Found (Valid XML)
+Sitemap URL: ${data.url}
+Total URLs Found: ${data.totalUrls}
+
+SAMPLE URLS:
+${linksList}${moreNote}`
+      );
+    } else {
+      showResult(
+        `SITEMAP CHECK
+
+Target: ${target}
+Status: ${data.message || "Sitemap not found"}`
+      );
+    }
+
+  } catch (error) {
+    showResult("Sitemap check failed: " + error.message);
+  }
+}
+
+if (sitemapBtn) {
+  sitemapBtn.addEventListener("click", () => {
+    askPermission(runSitemap);
+  });
+}
