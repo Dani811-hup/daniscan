@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -504,4 +505,28 @@ footer {
 #methodsBtn:active {
   transform: scale(0.98);
 }
+
+
+/* Robots.txt Result Styling */
+.robots-result {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.robots-content {
+  background-color: #0a0f14;
+  color: #00ff66;
+  border: 1px solid #1f2d3d;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 8px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 300px; /* Zyada lambi file ho to scroll bar aa jayega */
+  overflow-y: auto;
+  white-space: pre-wrap; /* Lambi lines khud neeche wali line mein aa jayengi */
+  word-wrap: break-word;
+}
+
 
