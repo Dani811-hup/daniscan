@@ -444,3 +444,48 @@ if (sitemapBtn) {
     askPermission(runSitemap);
   });
 }
+
+
+// WHOIS DOMAIN LOOKUP
+const whoisBtn = document.getElementById("whoisBtn");
+
+async function runWhois() {
+  const target = getTarget();
+  if (!target) return;
+
+  showResult("Fetching WHOIS domain records... Please wait.");
+
+  try {
+    const data = await getAPIData(
+      `/api/whois?domain=${encodeURIComponent(target)}`
+    );
+
+    const nsList = (data.nameServers || []).join("\n") || "None";
+    const statusList = (data.statuses || []).join(", ") || "Active";
+
+    showResult(
+      `WHOIS DOMAIN LOOKUP
+
+Domain: ${data.domain}
+Registrar: ${data.registrar}
+
+Created Date: ${data.createdDate}
+Updated Date: ${data.updatedDate}
+Expiry Date: ${data.expiryDate}
+
+Status: ${statusList}
+
+NAME SERVERS:
+${nsList}`
+    );
+
+  } catch (error) {
+    showResult("WHOIS lookup failed: " + error.message);
+  }
+}
+
+if (whoisBtn) {
+  whoisBtn.addEventListener("click", () => {
+    askPermission(runWhois);
+  });
+}
