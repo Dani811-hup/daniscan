@@ -446,46 +446,41 @@ if (sitemapBtn) {
 }
 
 
-// WHOIS DOMAIN LOOKUP
-const whoisBtn = document.getElementById("whoisBtn");
+// EMAIL SECURITY CHECK (SPF & DMARC)
+const emailSecBtn = document.getElementById("emailSecBtn");
 
-async function runWhois() {
+async function runEmailSecurity() {
   const target = getTarget();
   if (!target) return;
 
-  showResult("Fetching WHOIS domain records... Please wait.");
+  showResult("Checking SPF & DMARC Email Security... Please wait.");
 
   try {
     const data = await getAPIData(
-      `/api/whois?domain=${encodeURIComponent(target)}`
+      `/api/emailsec?domain=${encodeURIComponent(target)}`
     );
 
-    const nsList = (data.nameServers || []).join("\n") || "None";
-    const statusList = (data.statuses || []).join(", ") || "Active";
-
     showResult(
-      `WHOIS DOMAIN LOOKUP
+      `EMAIL SECURITY AUDIT (SPF & DMARC)
 
-Domain: ${data.domain}
-Registrar: ${data.registrar}
+Target: ${data.domain}
+Security Status: ${data.riskLevel}
 
-Created Date: ${data.createdDate}
-Updated Date: ${data.updatedDate}
-Expiry Date: ${data.expiryDate}
+[ SPF RECORD ]
+${data.spf ? data.spf : "MISSING - Anyone can spoof emails from this domain!"}
 
-Status: ${statusList}
-
-NAME SERVERS:
-${nsList}`
+[ DMARC RECORD ]
+${data.dmarc ? data.dmarc : "MISSING - No DMARC policy found!"}`
     );
 
   } catch (error) {
-    showResult("WHOIS lookup failed: " + error.message);
+    showResult("Email security check failed: " + error.message);
   }
 }
 
-if (whoisBtn) {
-  whoisBtn.addEventListener("click", () => {
-    askPermission(runWhois);
+if (emailSecBtn) {
+  emailSecBtn.addEventListener("click", () => {
+    askPermission(runEmailSecurity);
   });
 }
+
